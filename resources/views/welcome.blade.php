@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>保證卡系統</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -16,20 +16,6 @@
         </style>
     </head>
     <body>
-
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif            
-        </div>
-
         <div class="container" style="margin-top:100px; margin-bottom:100px">
             <div class="row justify-content-center">
                 <div class="col-md-6" id="warranty-area">
@@ -53,6 +39,14 @@
                         <div class="form-group pb-3">
                             <label for="user-name" class="pb-1">姓名</label>
                             <input type="text" class="form-control" id="user-name" name="user-name">
+                        </div>
+                        <div class="form-group pb-3">
+                            <label for="user-address" class="pb-1">住址</label>
+                            <input type="text" class="form-control" id="user-address" name="user-address">
+                        </div>
+                        <div class="form-group pb-3">
+                            <label for="user-carlicense" class="pb-1">車牌號碼</label>
+                            <input type="text" class="form-control" id="user-carlicense" name="user-carlicense">
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-carbrand" class="pb-1">車輛品牌</label>
@@ -120,20 +114,16 @@
                             </select>
                         </div>
                         <div class="form-group pb-3">
-                            <label for="user-carlicense" class="pb-1">車牌號碼</label>
-                            <input type="text" class="form-control" id="user-carlicense" name="user-carlicense">
-                        </div>
-
-                        <div class="form-group pb-3">
-                            <label for="user-cartype" class="pb-1">車輛型式</label>
-                            <select class="form-control" id="user-cartype" name="user-cartype">
+                            <label for="warranty-cartype" class="pb-1">型式</label>
+                            <select class="form-control" id="warranty-cartype" name="warranty-cartype">
                                 <option>轎車</option>
                                 <option>大型休旅車</option>
                                 <option>小型休旅車</option>
                                 <option>貨車</option>
                             </select>
                         </div>
-    
+
+                        <!-- pass json body start -->
                         <div class="input-group pb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">產品</span>
@@ -230,10 +220,10 @@
                             </select>
                 
                             <div class="input-group-append">
-                                <a href="#" class="btn btn-secondary plus-dp" style="width:40px">+</a>
+                                <a class="btn btn-secondary plus-dp" style="width:40px">+</a>
                             </div>
                         </div>
-                
+
                         <div class="form-group pb-3">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋">
@@ -263,6 +253,7 @@
     
                         <div id="dp">
                         </div>
+                        <!-- pass json body end -->
 
                         <div class="form-group pb-3">
                             <label for="store" class="pb-1">施工店家</label>
@@ -272,6 +263,11 @@
                         <div class="form-group pb-3">
                             <label for="price" class="pb-1">施工費用</label>
                             <input type="text" class="form-control" id="price" name="price">
+                        </div>
+
+                        <div class="form-group pb-3">
+                            <label for="recommand" class="pb-1">推薦人</label>
+                            <input type="text" class="form-control" id="recommand" name="recommand">
                         </div>
 
                         <div class="form-group pb-3">

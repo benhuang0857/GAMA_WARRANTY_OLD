@@ -104,7 +104,7 @@ class CarTemplate
                 </select>
 
                 <div class="input-group-append">
-                    <a href="#" class="btn btn-secondary minus-dp" style="width:40px">–</a>
+                    <a class="btn btn-secondary minus-dp" style="width:40px">–</a>
                 </div>
             </div>
 
