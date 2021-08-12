@@ -12,23 +12,14 @@ class HomeController extends Controller
 {
     public function index(Content $content)
     {
+        $output = '
+        <div class="form-group pb-3">
+            <span style="font-size: 50px; position: relative; top: 8px;">GAMA</span>
+            <span style="font-size: 22px; position: relative; top: 8px;">保證卡</span>
+        </div>
+        ';
+
         return $content
-            ->title('Dashboard')
-            ->description('Description...')
-            ->row(Dashboard::title())
-            ->row(function (Row $row) {
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
-            });
+            ->title($output);
     }
 }

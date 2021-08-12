@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>保證卡系統</title>
 
         <!-- Fonts -->
@@ -30,92 +30,36 @@
                         @csrf
                         <div class="form-group pb-3">
                             <label for="user-email" class="pb-1">Email</label>
-                            <input type="email" class="form-control" id="user-email" name="user-email" aria-describedby="emailHelp" placeholder="請輸入Email">
+                            <input type="email" class="form-control" id="user-email" name="user-email" aria-describedby="emailHelp" placeholder="請輸入Email" required>
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-mobile" class="pb-1">手機</label>
-                            <input type="text" class="form-control" id="user-mobile" name="user-mobile">
+                            <input type="text" class="form-control" id="user-mobile" name="user-mobile" required>
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-name" class="pb-1">姓名</label>
-                            <input type="text" class="form-control" id="user-name" name="user-name">
+                            <input type="text" class="form-control" id="user-name" name="user-name" required>
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-address" class="pb-1">住址</label>
-                            <input type="text" class="form-control" id="user-address" name="user-address">
+                            <input type="text" class="form-control" id="user-address" name="user-address" required>
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-carlicense" class="pb-1">車牌號碼</label>
-                            <input type="text" class="form-control" id="user-carlicense" name="user-carlicense">
+                            <input type="text" class="form-control" id="user-carlicense" name="user-carlicense" required>
                         </div>
                         <div class="form-group pb-3">
                             <label for="user-carbrand" class="pb-1">車輛品牌</label>
-                            <select class="form-control" id="user-carbrand" name="user-carbrand">
-                                <option>無</option>
-                                <option value="Audi">Audi</option>
-                                <option value="Alfa Romeo">Alfa Romeo</option>
-                                <option value="Aston Martin">Aston Martin</option>
-                                <option value="Am General Hummer">Am General Hummer</option>
-                                <option value="Benz">Benz</option>
-                                <option value="Bentley">Bentley</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Buick">Buick</option>
-                                <option value="Citroen">Citroen</option>
-                                <option value="Cadillac">Cadillac</option>
-                                <option value="Chrysler">Chrysler</option>
-                                <option value="Daewoo">Daewoo</option>
-                                <option value="Daihatsu">Daihatsu</option>
-                                <option value="Dodge">Dodge</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Ferrari">Ferrari</option>
-                                <option value="FIAT">FIAT</option>
-                                <option value="Formosa">Formosa</option>
-                                <option value="GM">GM</option>
-                                <option value="Hino">Hino</option>
-                                <option value="Honda">Honda</option>
-                                <option value="Hyundai">Hyundai</option>
-                                <option value="Infiniti">Infiniti</option>
-                                <option value="ISUZU">ISUZU</option>
-                                <option value="Iveco">Iveco</option>
-                                <option value="Jaguar">Jaguar</option>
-                                <option value="JEEP">JEEP</option>
-                                <option value="KIA">KIA</option>
-                                <option value="Lamborghini">Lamborghini</option>
-                                <option value="Landrover">Landrover</option>
-                                <option value="Lancia">Lancia</option>
-                                <option value="Lotus">Lotus</option>
-                                <option value="Lincoln">Lincoln</option>
-                                <option value="Lexus">Lexus</option>
-                                <option value="Luxgen">Luxgen</option>
-                                <option value="Mazda">Mazda</option>
-                                <option value="Mitsubishi">Mitsubishi</option>
-                                <option value="Smart">Smart</option>
-                                <option value="Maserati">Maserati</option>
-                                <option value="MINI">MINI</option>
-                                <option value="Mercury">Mercury</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Opel">Opel</option>
-                                <option value="Proton">Proton</option>
-                                <option value="Peugeot">Peugeot</option>
-                                <option value="Porsche">Porsche</option>
-                                <option value="Rolls Royce">Rolls Royce</option>
-                                <option value="Renault">Renault</option>
-                                <option value="Suzuki">Suzuki</option>
-                                <option value="Subaru">Subaru</option>
-                                <option value="Ssangyong">Ssangyong</option>
-                                <option value="SAAB">SAAB</option>
-                                <option value="Skoda">Skoda</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Tobe">Tobe</option>
-                                <option value="Tesla">Tesla</option>
-                                <option value="Volkswagen">Volkswagen</option>
-                                <option value="Volvo">Volvo</option>
-
+                            <select class="form-control" id="user-carbrand" name="user-carbrand" required>
+                                <option value="none">無</option>
+                                @foreach ($Data['Brands'] as $Brand)
+                                <option value="{{$Brand->name}}">{{$Brand->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group pb-3">
-                            <label for="warranty-cartype" class="pb-1">型式</label>
-                            <select class="form-control" id="warranty-cartype" name="warranty-cartype">
+                            <label for="warranty-type" class="pb-1">型式</label>
+                            <select class="form-control" id="warranty-type" name="warranty-type" required>
                                 <option>轎車</option>
                                 <option>大型休旅車</option>
                                 <option>小型休旅車</option>
@@ -124,135 +68,54 @@
                         </div>
 
                         <!-- pass json body start -->
-                        <div class="input-group pb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">產品</span>
+                        <div id="product-group">
+                            <div class="input-group pb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">產品</span>
+                                </div>
+                                <select class="form-control" class="product" name="product-1" required>
+                                    <option value="none">無</option>
+                                    @foreach ($Data['Products'] as $Product)
+                                    <option value="{{$Product->name}}">{{$Product->name}}</option>
+                                    @endforeach
+                                </select>
+                    
+                                <div class="input-group-append">
+                                    <a class="btn btn-secondary plus-dp" style="width:40px">+</a>
+                                </div>
                             </div>
-                            <select class="form-control" class="product">
-                                <option>無</option>
-                                <option>冰盾 TPU-S7</option>
-                                <option>冰盾 TPU-S8</option>
-                                <option>A700</option>
-                                <option>A600</option>
-                                <option>A500</option>
-                                <option>A400</option>
-                                <option>A300</option>
-                                <option>A200</option>
-                                <option>A100</option>
-                                <option>B35</option>
-                                <option>B30</option>
-                                <option>B15</option>
-                                <option>B10</option>
-                                <option>C350</option>
-                                <option>C250</option>
-                                <option>C100</option>
-                                <option>CV40</option>
-                                <option>CV20</option>
-                                <option>C70</option>
-                                <option>C60</option>
-                                <option>C50</option>
-                                <option>C45</option>
-                                <option>C40</option>
-                                <option>C30</option>
-                                <option>C25</option>
-                                <option>C20</option>
-                                <option>C10</option>
-                                <option>CP70</option>
-                                <option>CP60</option>
-                                <option>CP45</option>
-                                <option>CP30</option>
-                                <option>CP20</option>
-                                <option>CP10</option>
-                                <option>CARBON35</option>
-                                <option>SMARTE400</option>
-                                <option>E700</option>
-                                <option>E600</option>
-                                <option>E500</option>
-                                <option>E400</option>
-                                <option>E300</option>
-                                <option>E200</option>
-                                <option>E100</option>
-                                <option>GA70</option>
-                                <option>GA60</option>
-                                <option>GA50</option>
-                                <option>GA40</option>
-                                <option>GA35</option>
-                                <option>GA30</option>
-                                <option>G-10</option>
-                                <option>HP70</option>
-                                <option>HP60</option>
-                                <option>HP50</option>
-                                <option>HP40</option>
-                                <option>HP30</option>
-                                <option>HP20</option>
-                                <option>HP10</option>
-                                <option>K-35</option>
-                                <option>K-25</option>
-                                <option>K-15</option>
-                                <option>K-10</option>
-                                <option>K-05</option>
-                                <option>L350</option>
-                                <option>LG30</option>
-                                <option>LG20</option>
-                                <option>LG10</option>
-                                <option>LG05</option>
-                                <option>LD05</option>
-                                <option>N35</option>
-                                <option>M35</option>
-                                <option>R-10</option>
-                                <option>P-16</option>
-                                <option>P-36</option>
-                                <option>P-100</option>
-                                <option>P-300</option>
-                                <option>P-350</option>
-                                <option>UP70</option>
-                                <option>UP60</option>
-                                <option>UP45</option>
-                                <option>UP30</option>
-                                <option>UP20</option>
-                                <option>UP10</option>
-                                <option>V-14</option>
-                                <option>V-37</option>
-                                <option>V70</option>
-                                <option>V40</option>
-                                <option>V35</option>
-                                <option>V14</option>
-                            </select>
-                
-                            <div class="input-group-append">
-                                <a class="btn btn-secondary plus-dp" style="width:40px">+</a>
+
+                            <div class="form-group pb-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox1">前擋</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後擋" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox2">後擋</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前側檔" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox1">前側檔</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後側檔" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox2">後側檔</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="左右側" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox2">左右側</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="天窗" name="construction-site-1">
+                                    <label class="form-check-label" for="inlineCheckbox3">天窗</label>
+                                </div>
+                            </div>
+
+                            <div id="dp">
                             </div>
                         </div>
 
-                        <div class="form-group pb-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋">
-                                <label class="form-check-label" for="inlineCheckbox1">前擋</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後擋">
-                                <label class="form-check-label" for="inlineCheckbox2">後擋</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前側檔">
-                                <label class="form-check-label" for="inlineCheckbox1">前側檔</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後側檔">
-                                <label class="form-check-label" for="inlineCheckbox2">後側檔</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="左右側">
-                                <label class="form-check-label" for="inlineCheckbox2">左右側</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                                <label class="form-check-label" for="inlineCheckbox3">天窗 (disabled)</label>
-                            </div>
-                        </div>
-    
-                        <div id="dp">
-                        </div>
                         <!-- pass json body end -->
 
                         <div class="form-group pb-3">
@@ -271,7 +134,7 @@
                         </div>
 
                         <div class="form-group pb-3">
-                            <button style="width:100%" type="submit" class="btn btn-secondary btn-sm">註冊保證卡</button>
+                            <a style="width:100%" type="submit" class="btn btn-secondary btn-sm" id="pass">註冊保證卡</a>
                         </div>
                     </form>
                 </div>
@@ -280,20 +143,92 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+            var i = 2;
             $('.plus-dp').click(function(){
                 $.ajax({
                     type: "GET",
                     url: '/product',
+                    data: {
+                        'num': i
+                    },
                     dataType: 'html',
                     success: function (response) {
                         $('#dp').append(response);
+                        i++;
                     },
                 });
             });
 
             $('.minus-dp').click(function(){
                 $(this).parent().remove();
+            });
+
+            $('#pass').click(function(){
+
+                var fill_all = false;
+                $('input[type="text"]').each(function() {
+                    if ($(this).val() == "") {
+                        Swal.fire({
+                            icon: 'error',
+                            confirmButtonColor: 'red',
+                            title: '請填寫表單欄位',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                        fill_all = false;
+                    }
+                    else
+                    {
+                        fill_all = true;
+                    }
+                    
+                });
+
+                if(fill_all == true){
+                    var product_group = $('#product-group :input').serializeArray();
+                    console.log(product_group);
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: '/postwarranty',
+                        data: {
+                            'user_name': $('#user-name').val(),
+                            'user_mobile': $('#user-mobile').val(),
+                            'user_email': $('#user-email').val(),
+                            'user_address': $('#user-address').val(),
+                            'user_carlicense': $('#user-carlicense').val(),
+                            'user_carbrand': $('#user-carbrand').val(),
+                            'warranty_type': $('#warranty-type').val(),
+                            'store': $('#store').val(),
+                            'price': $('#price').val(),
+                            'recommand': $('#recommand').val(),
+                            'product_group': product_group,
+                        },
+                        dataType: 'html',
+                        success: function (response) {
+                            Swal.fire({
+                                icon: 'success',
+                                confirmButtonColor: '#6c757d',
+                                title: '保證卡註冊成功',
+                                showClass: {
+                                    popup: 'animate__animated animate__fadeInDown'
+                                },
+                                hideClass: {
+                                    popup: 'animate__animated animate__fadeOutUp'
+                                }
+                            })
+                        },
+                    });
+                }
+
             });
         </script>
     </body>
