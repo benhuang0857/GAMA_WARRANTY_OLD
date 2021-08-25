@@ -75,6 +75,7 @@ class UserController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', '姓名');
+        $form->text('uniqid', '系統自動產生ID')->value(uniqid())->readonly();
         $form->email('email', __('Email'));
         $form->mobile('mobile', '電話')->options(['mask' => '99-9999-9999']);
         $form->password('password', '密碼');

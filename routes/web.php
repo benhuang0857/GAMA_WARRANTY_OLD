@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', 'WarrantyFormPageController@index');
-
 Auth::routes();
-
+Route::get('/warranty', 'WarrantyFormPageController@index')->middleware('auth');
+Route::get('/warranty/{uid}', 'WarrantyFormPageController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product', 'WarrantyFormPageController@getProductHTM');
 Route::post('/postwarranty', 'WarrantyFormPageController@postWarranty');

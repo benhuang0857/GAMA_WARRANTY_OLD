@@ -10,14 +10,16 @@ use App\Brand;
 
 class WarrantyFormPageController extends Controller
 {
-    public function index()
+    public function index($uid = null)
     {
+        $recommand = $uid;
         $products = Product::all();
         $brands = Brand::all();
 
         $data = [
             'Products' => $products,
-            'Brands'   => $brands
+            'Brands'   => $brands,
+            'Recommand'=> $recommand
         ];
 
         return view('welcome')->with('Data', $data);

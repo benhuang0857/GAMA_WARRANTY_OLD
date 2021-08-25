@@ -130,7 +130,7 @@
 
                         <div class="form-group pb-3">
                             <label for="recommand" class="pb-1">推薦人</label>
-                            <input type="text" class="form-control" id="recommand" name="recommand">
+                            <input type="text" class="form-control" id="recommand" name="recommand" value="{{$Data['Recommand']}}" readonly>
                         </div>
 
                         <div class="form-group pb-3">

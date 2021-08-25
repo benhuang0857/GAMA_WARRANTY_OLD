@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $recommand_url = $user->uniqid;
+
+        $data = [
+            'User' => $user,
+            'Recommand_URL'=> $recommand_url
+        ];
+
+        return view('home')->with('Data', $data);
     }
 }
