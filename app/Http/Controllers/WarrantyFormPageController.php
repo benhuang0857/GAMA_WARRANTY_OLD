@@ -7,16 +7,27 @@ use App\CardTemplate\CarTemplate;
 use App\WarrantyCard;
 use App\Product;
 use App\Brand;
+use App\GamaPointLog;
+use Auth;
 
 class WarrantyFormPageController extends Controller
 {
     public function index($uid = null)
     {
-        $recommand = $uid;
+        if($uid == null)
+        {
+            $recommand = 'no';
+        }
+        else
+        {
+            $recommand = $uid;
+        }
+        
         $products = Product::all();
         $brands = Brand::all();
 
         $data = [
+            'Auth'     => Auth::user(),
             'Products' => $products,
             'Brands'   => $brands,
             'Recommand'=> $recommand
@@ -65,11 +76,18 @@ class WarrantyFormPageController extends Controller
 
         }
 
-        //$card->warranty_body = json_encode($req->input('product_group'), JSON_UNESCAPED_UNICODE);
         $card->recommand_user_id = $req->input('recommand');
         try
         {
             $card->save();
+            if($card->recommand_user_id != 'no')
+            {
+                $GamaPointLog = new GamaPointLog;
+                $GamaPointLog->user_uniqid = $card->recommand_user_id;
+                $GamaPointLog->point = 500;
+                $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結';
+                $GamaPointLog->save();
+            }
             return 'success';
         }
         catch(\Exception $e)
