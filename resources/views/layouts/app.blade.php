@@ -1,106 +1,220 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'GAMA') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600">
-    <link rel="stylesheet" href="{{asset('assets/fonts/ionicons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/Footer-Basic.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
-    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
-    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
-    <link rel="shortcut icon" href="{{asset('assets/img/logo.svg')}}" type="image/x-icon">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Ample Admin Lite Template by WrapPixel</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('ample/plugins/images/favicon.png')}}">
+    <!-- Custom CSS -->
+    <link href="{{asset('ample/plugins/bower_components/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('ample/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css')}}">
+    <!-- Custom CSS -->
+    <link href="{{asset('ample/css/style.min.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
-    <section class="d-flex flex-column justify-content-between" id="hero">
-        <div id="hero-top">
-            <nav class="navbar navbar-light navbar-expand-lg">
-                <div class="container-fluid"><a class="navbar-brand" href="#hero" style="background: url(&quot;assets/img/logo.svg&quot;) center / 80% no-repeat;width: 130px;font-size: 13px;"></a>
-                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navcol-1" style="font-size: 13px;font-family: Montserrat, sans-serif;font-weight: 600;text-transform: uppercase; background: rgba(255, 255, 255, 0.7);padding: 10px; border-radius: 6px;">
-                        <!-- Right Side Of Navbar -->
-                        <ul class="nav navbar-nav mx-auto">
-                            <!-- Authentication Links -->
-                            @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a class="nav-link active nav_hover" href="#" target="_blank">您的保固資訊<br></a></li>
-                                <li class="nav-item"><a class="nav-link active nav_hover" href="#" target="_blank">GAMA點數<br></a></li>
-                                <li class="nav-item"><a class="nav-link active nav_hover" href="#" target="_blank">商城<br></a></li>
-                                <li class="nav-item"><a class="nav-link active nav_hover" href="#" target="_blank">個人資料<br></a></li>
-                            @endguest
-                        </ul>
-                    </div>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="home">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!-- Dark Logo icon -->
+                            <img src="{{asset('images/site/LOGO.png')}}" width="80" style="padding: 10px" alt="homepage" />
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+
             </nav>
-            <h1 class="text-center" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" id="title" style="font-size: 22px;">Tesla</h1>
-            <h2 class="text-center" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" id="subtitle" style="font-size: 40px;font-family: Montserrat, sans-serif;">Roadster</h2>
-        </div>
-
-        @yield('content')
-
-        <div id="hero-bottom">
-            <div class="container" style="max-width: 700px;height:  ;">
-                <div class="row">
-                    <div class="col-8 offset-2" id="alignP">
-                        <p style="font-weight: 500;font-family: Montserrat, sans-serif;margin-bottom: 0;"><br>​The quickest car in the world, with record-setting acceleration, range and performance.<br><br></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col" data-aos="fade" data-aos-delay="400" data-aos-once="true">
-                        <p id="p-top" style="font-size: 26px;font-weight: bold;font-family: Montserrat, sans-serif;margin-bottom: 0;"><i class="icon ion-speedometer"></i>&nbsp;1.9s</p>
-                        <p id="p-bottom" style="font-size: 13px;">0-60 mph</p>
-                    </div>
-                    <div class="col with-borders" data-aos="fade" data-aos-delay="500" data-aos-once="true">
-                        <p id="p-top-1" style="font-size: 26px;font-weight: bold;font-family: Montserrat, sans-serif;margin-bottom: 0;">+250mph</p>
-                        <p id="p-bottom-1" style="font-size: 13px;">Top Speed</p>
-                    </div>
-                    <div class="col" data-aos="fade" data-aos-delay="600" data-aos-once="true">
-                        <p id="p-top-2" style="font-size: 26px;font-weight: bold;font-family: Montserrat, sans-serif;margin-bottom: 0;">620mi</p>
-                        <p id="p-bottom-2" style="font-size: 13px;">Mile Range</p>
-                    </div>
-                </div>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul class="sidebarnav">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('login') }}" aria-expanded="false">
+                                    <i class="fas fa-bolt" aria-hidden="true"></i>
+                                    <span class="hide-menu">{{ __('Login') }}</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('register') }}" aria-expanded="false">
+                                    <i class="far fa-registered" aria-hidden="true"></i>
+                                    <span class="hide-menu">{{ __('Register') }}</span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="home" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span class="hide-menu">個人資料</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="warranty" aria-expanded="false">
+                                    <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                                    <span class="hide-menu">保卡申請</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="#" aria-expanded="false">
+                                    <i class="fas fa-bolt" aria-hidden="true"></i>
+                                    <span class="hide-menu">申請兌換充電里程</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="my_warranty" aria-expanded="false">
+                                    <i class="fas fa-window-maximize" aria-hidden="true"></i>
+                                    <span class="hide-menu">您的保固資訊</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" aria-expanded="false">
+                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                                    <span class="hide-menu">{{ __('Logout') }}</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endguest
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
             </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+
+            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
+                    href="https://www.wrappixel.com/">wrappixel.com</a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{asset('ample/plugins/bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('ample/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('ample/js/app-style-switcher.js')}}"></script>
+    <script src="{{asset('ample/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+    <!--Wave Effects -->
+    <script src="{{asset('ample/js/waves.js')}}"></script>
+    <!--Menu sidebar -->
+    <script src="{{asset('ample/js/sidebarmenu.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{asset('ample/js/custom.js')}}"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="{{asset('ample/plugins/bower_components/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{asset('ample/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{asset('ample/js/pages/dashboards/dashboard1.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("recommand_url");
+        
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+            Swal.fire({
+                icon: 'success',
+                confirmButtonColor: '#6c757d',
+                title: '複製成功',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+        function play() {
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+    </script>
 </body>
+
 </html>
