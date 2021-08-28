@@ -48,7 +48,7 @@
                     </div>
                     <label class="col-md-12 p-0">分享連結</label>
                     <div class="input-group mb-3">
-                        <input type="text" value="http://127.0.0.1:8000/warranty/{{$Data['Recommand_URL']}}" id="recommand_url" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input type="text" value="/warranty/{{$Data['Recommand_URL']}}" id="recommand_url" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製連結</button>
                     </div>
                 </form>
