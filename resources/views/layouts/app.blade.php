@@ -99,13 +99,13 @@
                             </li>
                         @else
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="home" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/home" aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     <span class="hide-menu">個人資料</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="warranty" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/warranty" aria-expanded="false">
                                     <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                                     <span class="hide-menu">保卡申請</span>
                                 </a>
@@ -117,7 +117,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="my_warranty" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/my_warranty" aria-expanded="false">
                                     <i class="fas fa-window-maximize" aria-hidden="true"></i>
                                     <span class="hide-menu">您的保固資訊</span>
                                 </a>
