@@ -8,6 +8,7 @@ use App\WarrantyCard;
 use App\Product;
 use App\Brand;
 use App\GamaPointLog;
+use App\User;
 use Auth;
 
 class WarrantyFormPageController extends Controller
@@ -96,10 +97,38 @@ class WarrantyFormPageController extends Controller
             if($card->recommand_user_id != 'no')
             {
                 $GamaPointLog = new GamaPointLog;
-                $GamaPointLog->user_uniqid = $card->recommand_user_id;
+                $GamaPointLog->userid_share = $card->recommand_user_id;
+                $GamaPointLog->userid_used = Auth::user()->uniqid;
                 $GamaPointLog->point = 500;
-                $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結';
+                $GamaPointLog->status = 'ON';
+                $GamaPointLog->used = 'NO';
+                $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
                 $GamaPointLog->save();
+
+                // $GamaPointLog = new GamaPointLog;
+                // $GamaPointLog->user_uniqid = $card->recommand_user_id;
+                // $GamaPointLog->point = 500;
+                // $GamaPointLog->status = 'ON';
+                // $GamaPointLog->used = 'YES';
+                // $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送會員'.Auth::user()->uniqid.'點數：'.$GamaPointLog->point;
+                // $GamaPointLog->save();
+
+                // $UserA = User::where('uniqid', $GamaPointLog->user_uniqid)->first();
+                // $UserA->gama_point += $GamaPointLog->point;
+                // $UserA->save();
+
+                // $GamaPointLog = new GamaPointLog;
+                // $GamaPointLog->user_uniqid = Auth::user()->uniqid;
+                // $GamaPointLog->point = 500;
+                // $GamaPointLog->status = 'ON';
+                // $GamaPointLog->used = 'YES';
+                // $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送會員'.$card->recommand_user_id.'點數：'.$GamaPointLog->point;
+                // $GamaPointLog->save();
+
+                // $UserB = User::where('uniqid', $GamaPointLog->user_uniqid)->first();
+                // $UserB->gama_point += $GamaPointLog->point;
+                // $UserB->save();
+                
             }
             return 'success';
         }

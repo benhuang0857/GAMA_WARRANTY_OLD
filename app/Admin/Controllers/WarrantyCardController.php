@@ -26,12 +26,12 @@ class WarrantyCardController extends AdminController
     {
         $grid = new Grid(new WarrantyCard());
 
-        //$grid->column('id', __('Id'));
+        $grid->column('id', __('Id'));
         $grid->column('card_id', '保卡編號')->width(130);
         $grid->column('name', '用戶名')->width(80);
         $grid->column('mobile', '手機')->width(120);
         //$grid->column('address', '地址')->width(200);
-        //$grid->column('email', __('Email'))->width(200);
+        $grid->column('email', __('Email'))->width(200);
         $grid->column('car_license', '車牌')->width(80);
         $grid->column('car_brand', '車子品牌')->width(80);
         $grid->column('warranty_type', '保卡型號')->width(100);

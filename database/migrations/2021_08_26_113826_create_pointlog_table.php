@@ -15,7 +15,9 @@ class CreatePointlogTable extends Migration
     {
         Schema::create('pointlog', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_uniqid');
+            //$table->string('user_uniqid');
+            $table->string('userid_share');
+            $table->string('userid_used');
             $table->integer('point');
             $table->string('status')->default('OFF')->comment('ON/OFF');
             $table->string('note')->nullable();

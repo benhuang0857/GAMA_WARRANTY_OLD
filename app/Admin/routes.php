@@ -16,5 +16,5 @@ Route::group([
     $router->resource('products', ProductCardController::class);
     $router->resource('brands', BrandController::class);
     $router->resource('users', UserController::class);
-    $router->resource('gama-point-logs', GamaPointLogController::class);
+    $router->resource('gama_point_logs', GamaPointLogController::class);
 });

@@ -20,9 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('mobile')->unique();
             $table->string('password');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('gama_point')->default(0);
+            $table->string('status')->default('ON')->comment('ON/OFF');
             $table->rememberToken();
             $table->timestamps();
         });

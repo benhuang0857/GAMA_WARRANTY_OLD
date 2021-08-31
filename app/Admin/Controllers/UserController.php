@@ -30,10 +30,20 @@ class UserController extends AdminController
         $grid->column('name', '姓名');
         $grid->column('email', __('Email'));
         $grid->column('mobile', '手機');
-        $grid->column('password', __('Password'));
-        $grid->column('address', '住家地址');
-        $grid->column('avatar', '頭像');
+        //$grid->column('password', __('Password'));
+        //$grid->column('address', '住家地址');
+        //$grid->column('avatar', '頭像');
         $grid->column('gama_point', 'Gama點數');
+        $grid->column('status', '會員狀態')->display(function ($status) {
+            if($status == 'ON')
+            {
+                return '<span class="badge rounded-pill" style="background-color:green">通過</span>';
+            }
+            else
+            {
+                return '<span class="badge rounded-pill" style="background-color:red">審核中</span>';
+            }
+        });
         $grid->column('created_at', '創建時間');
         $grid->column('updated_at', '更新時間');
 

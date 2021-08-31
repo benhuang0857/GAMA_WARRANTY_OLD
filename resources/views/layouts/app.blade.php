@@ -12,7 +12,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>GAMA保卡系統V1.0</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('ample/plugins/images/favicon.png')}}">
@@ -99,6 +99,12 @@
                             </li>
                         @else
                             <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="#" aria-expanded="false">
+                                    <i class="fa fa-diamond" aria-hidden="true">G+</i>
+                                    <span class="hide-menu">GAMA點數：{{Auth()->user()->gama_point}}</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/home" aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     <span class="hide-menu">個人資料</span>
@@ -151,8 +157,8 @@
                 @yield('content')
             </div>
 
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
-                    href="https://www.wrappixel.com/">wrappixel.com</a>
+            <footer class="footer text-center"> 2021 © <a
+                    href="#">GAMA</a>
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
