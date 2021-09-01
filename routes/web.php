@@ -18,5 +18,9 @@ Route::get('/my_warranty', 'WarrantyFormPageController@warrantytable')->middlewa
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/', 'HomeController@index')->middleware('auth');
 
-Route::get('/product', 'WarrantyFormPageController@getProductHTM');
-Route::post('/postwarranty', 'WarrantyFormPageController@postWarranty');
+Route::get('/point_products', 'ProductController@index')->middleware('auth');
+Route::post('/transpoint', 'ProductController@transpoint')->middleware('auth');
+
+Route::get('/product', 'WarrantyFormPageController@getProductHTM')->middleware('auth');
+Route::get('/check_code', 'WarrantyFormPageController@checkcode')->middleware('auth');
+Route::post('/postwarranty', 'WarrantyFormPageController@postWarranty')->middleware('auth');

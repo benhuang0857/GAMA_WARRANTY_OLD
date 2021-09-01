@@ -7,6 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use App\GamaPointLog;
+use App\User;
 
 class WarrantyCardController extends AdminController
 {
@@ -27,7 +29,7 @@ class WarrantyCardController extends AdminController
         $grid = new Grid(new WarrantyCard());
 
         $grid->column('id', __('Id'));
-        $grid->column('card_id', '保卡編號')->width(130);
+        $grid->column('check_code', '保卡編號')->width(130);
         $grid->column('name', '用戶名')->width(80);
         $grid->column('mobile', '手機')->width(120);
         //$grid->column('address', '地址')->width(200);
@@ -97,7 +99,7 @@ class WarrantyCardController extends AdminController
     {
         $form = new Form(new WarrantyCard());
 
-        $form->text('card_id', '保卡編號')->readonly();
+        $form->text('card_id', '保卡編號');
         $form->text('name', '用戶名');
         $form->mobile('mobile', '手機')->options(['mask' => '99-9999-9999']);
         $form->text('address', '地址');
@@ -109,7 +111,7 @@ class WarrantyCardController extends AdminController
         $form->date('construction_date', '施工日期');
         $form->textarea('warranty_body', '施工項目');
         $form->text('price', '施工費用');
-        $form->text('recommand_user_id', '推薦人ID')->readonly();
+        $form->text('recommand_user_id', '推薦人ID')->default('no');
         $form->file('card_pic_src', '上傳');
         $form->select('status', '保卡狀態')->options([
             'OFF' => '未啟用',
@@ -121,8 +123,27 @@ class WarrantyCardController extends AdminController
         $form->saving(function (Form $form) {
             if ($form->status == 'ON' && $form->startdate == '' && $form->model()->has_enabled == 'no') {
                 $form->startdate = now();
-                $form->enddate = Date('y-m-d', strtotime('+360 days'));
+                $form->enddate = Date('y-m-d', strtotime('+1825 days'));
                 $form->has_enabled = 'yes';
+            }
+
+            $gamaPointLog = GamaPointLog::where('userid_used', $form->model()->user_uniqid)->first();
+
+            //dd($gamaPointLog);
+
+            if($gamaPointLog->status == 'OFF' && $gamaPointLog->used == 'NO')
+            {
+                $user_share = User::where('uniqid', $gamaPointLog->userid_share)->first();
+                $user_share->gama_point += $gamaPointLog->point;
+                $user_share->save();
+
+                $user_used = User::where('uniqid', $gamaPointLog->userid_used)->first();
+                $user_used->gama_point += $gamaPointLog->point;
+                $user_used->save();
+
+                $gamaPointLog->status = 'ON';
+                $gamaPointLog->used = 'YES';
+                $gamaPointLog->save();
             }
         });
 

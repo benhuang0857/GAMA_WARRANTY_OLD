@@ -15,6 +15,7 @@ class CreateWarrantycardTable extends Migration
     {
         Schema::create('warranty_card', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('check_code')->comment('檢查碼');
             $table->string('card_id')->comment('保卡卡號唯一');
             $table->string('user_uniqid')->comment('顧客唯一ID');
             $table->string('name')->comment('顧客姓名');

@@ -77,7 +77,8 @@ class RegisterController extends Controller
 
         #註冊新會員贈送
         $pointLog = new GamaPointLog;
-        $pointLog->user_uniqid = $uniqid;
+        $pointLog->userid_share = 'no';
+        $pointLog->userid_used = $uniqid;
         $pointLog->point = 100;
         $pointLog->note = $uniqid.'註冊新會員贈送';
         $pointLog->status = 'ON';

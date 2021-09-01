@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CardTemplate\CarTemplate;
+use App\CheckWarranty;
 use App\WarrantyCard;
 use App\Product;
 use App\Brand;
@@ -58,6 +59,7 @@ class WarrantyFormPageController extends Controller
     public function postWarranty(Request $req)
     {
         $card = new WarrantyCard;
+        $card->check_code = $req->input('check_code');
         $card->card_id = uniqid();
         $card->user_uniqid = Auth::user()->uniqid;
         $card->name = $req->input('user_name');
@@ -94,47 +96,41 @@ class WarrantyFormPageController extends Controller
         try
         {
             $card->save();
+            $checkWarranty = CheckWarranty::where('check_code', $card->check_code)->first();
+            $checkWarranty->used = 'YES';
+            $checkWarranty->save();
+
             if($card->recommand_user_id != 'no')
             {
                 $GamaPointLog = new GamaPointLog;
                 $GamaPointLog->userid_share = $card->recommand_user_id;
                 $GamaPointLog->userid_used = Auth::user()->uniqid;
                 $GamaPointLog->point = 500;
-                $GamaPointLog->status = 'ON';
+                $GamaPointLog->status = 'OFF';
                 $GamaPointLog->used = 'NO';
                 $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
-                $GamaPointLog->save();
-
-                // $GamaPointLog = new GamaPointLog;
-                // $GamaPointLog->user_uniqid = $card->recommand_user_id;
-                // $GamaPointLog->point = 500;
-                // $GamaPointLog->status = 'ON';
-                // $GamaPointLog->used = 'YES';
-                // $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送會員'.Auth::user()->uniqid.'點數：'.$GamaPointLog->point;
-                // $GamaPointLog->save();
-
-                // $UserA = User::where('uniqid', $GamaPointLog->user_uniqid)->first();
-                // $UserA->gama_point += $GamaPointLog->point;
-                // $UserA->save();
-
-                // $GamaPointLog = new GamaPointLog;
-                // $GamaPointLog->user_uniqid = Auth::user()->uniqid;
-                // $GamaPointLog->point = 500;
-                // $GamaPointLog->status = 'ON';
-                // $GamaPointLog->used = 'YES';
-                // $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送會員'.$card->recommand_user_id.'點數：'.$GamaPointLog->point;
-                // $GamaPointLog->save();
-
-                // $UserB = User::where('uniqid', $GamaPointLog->user_uniqid)->first();
-                // $UserB->gama_point += $GamaPointLog->point;
-                // $UserB->save();
-                
+                $GamaPointLog->save();                
             }
             return 'success';
         }
         catch(\Exception $e)
         {
             return $e->getMessage();
+        }
+    }
+
+    public function checkcode(Request $req)
+    {
+        $check_code = $req->check_code;
+        $find = CheckWarranty::where('check_code', $check_code)->first();
+        
+        if( $find != null && $find->used != 'YES' )
+        {
+            return 'pass';
+        }
+        else
+        {
+            return 'error';
         }
     }
 }

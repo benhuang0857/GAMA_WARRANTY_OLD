@@ -117,7 +117,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="#" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products" aria-expanded="false">
                                     <i class="fas fa-bolt" aria-hidden="true"></i>
                                     <span class="hide-menu">申請兌換充電里程</span>
                                 </a>
