@@ -127,7 +127,7 @@ class WarrantyCardController extends AdminController
                 $form->has_enabled = 'yes';
             }
 
-            if($form->model()->user_uniqid != 'no')
+            if($form->model()->recommand_user_id != 'no')
             {
                 $gamaPointLog = GamaPointLog::where('userid_used', $form->model()->user_uniqid)->first();
 
