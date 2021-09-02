@@ -71,7 +71,10 @@ class CheckWarrantyController extends AdminController
         $form = new Form(new checkwarranty());
 
         $form->text('check_code', __('Check code'));
-        $form->text('used', __('Used'))->default('NO');
+        $form->select('used', __('Used'))->options([
+            'NO' => '未啟用',
+            'YES' => '啟用',
+        ])->default('NO');
         $form->text('bind_user_uniqid', __('Bind user uniqid'));
 
         return $form;

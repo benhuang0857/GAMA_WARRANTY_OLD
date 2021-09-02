@@ -67,7 +67,10 @@ class ProductCardController extends AdminController
 
         $form->text('name', __('Name'));
         $form->text('sku', __('Sku'));
-        $form->text('status', __('Status'))->default('OFF');
+        $form->select('status', __('Status'))->options([
+            'OFF' => '未啟用',
+            'ON' => '啟用',
+        ]);
 
         return $form;
     }

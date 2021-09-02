@@ -64,7 +64,10 @@ class BrandController extends AdminController
         $form = new Form(new Brand());
 
         $form->text('name', __('Name'));
-        $form->text('status', __('Status'))->default('ON');
+        $form->select('status', __('Status'))->options([
+            'OFF' => '未啟用',
+            'ON' => '啟用',
+        ]);
 
         return $form;
     }
