@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use App\Admin\Actions\CheckCode\ImportCheckCode;
 
 class CheckWarrantyController extends AdminController
 {
@@ -32,6 +33,10 @@ class CheckWarrantyController extends AdminController
         $grid->column('bind_user_uniqid', __('Bind user uniqid'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->append(new ImportCheckCode());
+        });
 
         return $grid;
     }
