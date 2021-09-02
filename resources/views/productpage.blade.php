@@ -14,7 +14,7 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{asset('images/site/better.jpg')}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">華辰點數5000點</h5>
+                    <h5 class="card-title">華城點數5000點</h5>
                     <p class="card-text">價格：500 GAMA點數</p>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                         使用GAMA點數購買

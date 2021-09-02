@@ -16,7 +16,6 @@
                                 <th class="border-top-0">車牌</th>
                                 <th class="border-top-0">產品</th>
                                 <th class="border-top-0">施工店家</th>
-                                <th class="border-top-0">價格</th>
                                 <th class="border-top-0">審核狀態</th>
                                 <th class="border-top-0">查看證書</th>
                             </tr>
@@ -29,7 +28,6 @@
                                 <td>{{$card->car_license}}</td>
                                 <td>{{$card->warranty_body}}</td>
                                 <td>{{$card->construction_by}}</td>
-                                <td>${{$card->price}}</td>
                                 @if ($card->status == 'OFF')
                                 <td><span class="badge rounded-pill bg-secondary">審核中</span></td>
                                 @else

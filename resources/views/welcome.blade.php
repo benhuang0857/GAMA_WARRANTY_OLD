@@ -20,10 +20,10 @@
             <form method="POST" action="/postwarranty">
                 @csrf
                 <div class="form-group pb-3">
-                    <label for="check-code" class="pb-1">請先填寫檢查碼</label>
+                    <label for="check-code" class="pb-1">請先填寫保卡號碼</label>
                     <span id="check_status">
                     </span>
-                    <input type="text" class="form-control" id="check-code" name="check-code" placeholder="檢查碼" required>
+                    <input type="text" class="form-control" id="check-code" name="check-code" placeholder="保卡號碼" required>
                 </div>
                 <div id="lockit" class="cantsee">
                     <div class="form-group pb-3">
@@ -54,6 +54,10 @@
                             <option value="{{$Brand->name}}">{{$Brand->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group pb-3">
+                        <label for="user-carname" class="pb-1">車輛款式</label>
+                        <input type="text" class="form-control" id="user-carname" name="user-carname">
                     </div>
                     <div class="form-group pb-3">
                         <label for="warranty-type" class="pb-1">型式</label>
@@ -131,7 +135,7 @@
                         <input type="text" class="form-control" id="price" name="price">
                     </div>
 
-                    <div class="form-group pb-3">
+                    <div class="form-group pb-3" style="display: none">
                         <label for="recommand" class="pb-1">推薦人</label>
                         <input type="text" class="form-control" id="recommand" name="recommand" value="{{$Data['Recommand']}}" readonly>
                     </div>
@@ -233,6 +237,7 @@
                     'user_address': $('#user-address').val(),
                     'user_carlicense': $('#user-carlicense').val(),
                     'user_carbrand': $('#user-carbrand').val(),
+                    'user_carname': $('#user-carname').val(),
                     'warranty_type': $('#warranty-type').val(),
                     'store': $('#store').val(),
                     'construction_date': $('#construction_date').val(),

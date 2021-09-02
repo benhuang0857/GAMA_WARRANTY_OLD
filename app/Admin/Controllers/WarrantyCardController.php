@@ -36,6 +36,7 @@ class WarrantyCardController extends AdminController
         $grid->column('email', __('Email'))->width(200);
         $grid->column('car_license', '車牌')->width(80);
         $grid->column('car_brand', '車子品牌')->width(80);
+        $grid->column('carname', '車子款式')->width(80);
         $grid->column('warranty_type', '保卡型號')->width(100);
         $grid->column('construction_by', '施工店家號')->width(100);
         $grid->column('construction_date', '施工日期')->width(100);
@@ -77,6 +78,7 @@ class WarrantyCardController extends AdminController
         $show->field('email', __('Email'));
         $show->field('car_license', '車牌');
         $show->field('car_brand', '車子品牌');
+        $show->field('carname', '車子款式');
         $show->field('warranty_type', '保卡型號');
         $show->field('construction_by', '施工店家號');
         $show->field('construction_date', '施工日期');
@@ -106,6 +108,7 @@ class WarrantyCardController extends AdminController
         $form->email('email', __('Email'));
         $form->text('car_license', '車牌');
         $form->text('car_brand', '車子品牌');
+        $form->text('carname', '車子款式');
         $form->text('warranty_type', '保卡型號');
         $form->text('construction_by', '施工店家號');
         $form->date('construction_date', '施工日期');

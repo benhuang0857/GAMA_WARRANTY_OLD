@@ -68,6 +68,7 @@ class WarrantyFormPageController extends Controller
         $card->address = $req->input('user_address');
         $card->car_license = $req->input('user_carlicense');
         $card->car_brand = $req->input('user_carbrand');
+        $card->carname = $req->input('user_carname');
         $card->warranty_type = $req->input('warranty_type');
         $card->construction_by = $req->input('store');
         $card->construction_date = $req->input('construction_date');
@@ -104,11 +105,13 @@ class WarrantyFormPageController extends Controller
             {
                 $GamaPointLog = new GamaPointLog;
                 $GamaPointLog->userid_share = $card->recommand_user_id;
+                $GamaPointLog->share_name = User::where('uniqid', $card->recommand_user_id)->first()->name;
                 $GamaPointLog->userid_used = Auth::user()->uniqid;
+                $GamaPointLog->used_name = Auth::user()->name;
                 $GamaPointLog->point = 500;
                 $GamaPointLog->status = 'OFF';
                 $GamaPointLog->used = 'NO';
-                $GamaPointLog->note = '會員'.Auth::user()->uniqid.'使用了會員'.$card->recommand_user_id.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
+                $GamaPointLog->note = '會員'.$GamaPointLog->used_name.'使用了會員'.$GamaPointLog->share_name.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
                 $GamaPointLog->save();                
             }
             return 'success';

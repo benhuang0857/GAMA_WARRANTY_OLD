@@ -90,6 +90,10 @@ class UserController extends AdminController
         $form->mobile('mobile', '電話')->options(['mask' => '99-9999-9999']);
         $form->password('password', '密碼');
         $form->saving(function (Form $form) {
+            if ($form->password == null)
+            {
+                $form->password = $form->model()->password;
+            }
             if ($form->password && $form->model()->password != $form->password) {
                 $form->password = bcrypt($form->password);
             }

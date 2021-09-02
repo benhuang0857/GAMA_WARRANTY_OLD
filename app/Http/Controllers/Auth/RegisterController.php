@@ -71,39 +71,20 @@ class RegisterController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->mobile = $data['mobile'];
+        $user->address = $data['address'];
         $user->password = bcrypt($data['password']);
-        $user->gama_point = 100;
+        //$user->gama_point = 100;
         $user->save();
 
         #註冊新會員贈送
-        $pointLog = new GamaPointLog;
-        $pointLog->userid_share = 'no';
-        $pointLog->userid_used = $uniqid;
-        $pointLog->point = 100;
-        $pointLog->note = $uniqid.'註冊新會員贈送';
-        $pointLog->status = 'ON';
-        $pointLog->save();
+        // $pointLog = new GamaPointLog;
+        // $pointLog->userid_share = 'no';
+        // $pointLog->userid_used = $uniqid;
+        // $pointLog->point = 100;
+        // $pointLog->note = $uniqid.'註冊新會員贈送';
+        // $pointLog->status = 'ON';
+        // $pointLog->save();
 
         return $user;
-
-        #註冊新會員贈送
-        // GamaPointLog::create([
-        //     'user_uniqid' => $uniqid,
-        //     'point'       => 100,
-        //     'note'        => $uniqid.'註冊新會員贈送',
-        //     'status'      => 'ON'
-        // ]);
-
-        // return User::create([
-        //     'uniqid'      => $uniqid,
-        //     'name'        => $data['name'],
-        //     'email'       => $data['email'],
-        //     'mobile'      => $data['mobile'],
-        //     'password'    => bcrypt($data['password']),
-        //     'gama_point'  => 100
-        // ]);
-        
-        
-
     }
 }

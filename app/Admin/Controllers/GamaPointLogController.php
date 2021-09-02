@@ -28,8 +28,12 @@ class GamaPointLogController extends AdminController
         $grid = new Grid(new GamaPointLog());
 
         $grid->column('id', 'ID');
-        $grid->column('userid_share', '推薦人ID');
-        $grid->column('userid_used', '使用人ID');
+        $grid->column('share_name', '推薦人')->display(function(){
+            return $this->userid_share."(".$this->share_name.")";
+        });
+        $grid->column('used_name', '使用人')->display(function(){
+            return $this->userid_used."(".$this->used_name.")";
+        });
         $grid->column('point', '點數');
         $grid->column('status', '是否通過')->display(function ($status) {
             if($status == 'ON')
