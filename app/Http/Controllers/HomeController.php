@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         $data = [
             'User' => $user,
-            'Recommand_URL'=> $_SERVER['SERVER_NAME'].'/'.'warranty'.'/'.$recommand_url
+            'Recommand_URL'=> 'https://'.$_SERVER['SERVER_NAME'].'/'.'warranty'.'/'.$recommand_url
         ];
 
         return view('home')->with('Data', $data);
