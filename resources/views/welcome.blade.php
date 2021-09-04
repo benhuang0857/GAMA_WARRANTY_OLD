@@ -2,10 +2,17 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <style>
     .cantsee 
     {
         display: none;
+    }
+    .modal a.close-modal
+    {
+        position: absolute;
+        top: -1px !important;
+        right: -1px !important;
     }
 </style>
 
@@ -146,6 +153,27 @@
             </form>
         </div>
     </div>
+
+    <!-- AJAX response must be wrapped in the modal's root class. -->
+    <div class="modal" id="myModal" style="height: 500px; overflow: overlay; padding-top: 40px; padding-left: 15px; padding-right: 15px;">
+        <div>
+            <ul style="padding: 0px;">
+                <div>
+                    <h3><strong>GAMA汽車隔熱紙線上保固</strong></h3><br>
+                    <strong style="font-size: 18px"><span>為了能使用本服務，您同意以下事項：</span></strong><br>
+                    <ul>
+                        <li style="font-size: 16px">於本線上保固卡申請系統內提供您本人正確、最新及完整的資料。</li>
+                        <li style="font-size: 16px">若您提供任何錯誤、不實或不完整的資料， <strong style="color:brown">GAMA 有權終止您的保固服務。</strong></li>
+                        <li style="font-size: 16px">請完整並妥善保存您的車主保留聯或回執聯以便在保固服務產生時提出。</li>
+                        <li style="font-size: 16px">實施保固服務時， GAMA 有權以實際鑑定的隔熱紙情況作適當處理。
+                            <strong style="color:brown">當您使用本服務時，即表示您已閱讀、瞭解並同意接受本服務條款之所有內容。</strong></li>
+                    </ul>
+                </div>
+            </ul>
+         </div>
+    </div>
+
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -266,5 +294,10 @@
         }
 
     });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script>
+    $("#myModal").modal();
 </script>
 @endsection

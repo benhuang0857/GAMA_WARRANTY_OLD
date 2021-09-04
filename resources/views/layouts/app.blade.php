@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link href="{{asset('ample/css/style.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -185,11 +186,7 @@
     <script src="{{asset('ample/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{asset('ample/js/custom.js')}}"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="{{asset('ample/plugins/bower_components/chartist/dist/chartist.min.js')}}"></script>
-    <script src="{{asset('ample/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
-    <script src="{{asset('ample/js/pages/dashboards/dashboard1.js')}}"></script>
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
