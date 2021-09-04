@@ -159,7 +159,7 @@
         <div>
             <ul style="padding: 0px;">
                 <div>
-                    <h3><strong>GAMA汽車隔熱紙線上保固</strong></h3><br>
+                    <h3><strong>GAMA翠光隔熱紙</strong></h3><br>
                     <strong style="font-size: 18px"><span>為了能使用本服務，您同意以下事項：</span></strong><br>
                     <ul>
                         <li style="font-size: 16px">於本線上保固卡申請系統內提供您本人正確、最新及完整的資料。</li>
