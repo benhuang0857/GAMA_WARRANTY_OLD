@@ -173,6 +173,10 @@
                     </ul>
                 </div>
             </ul>
+            <div>
+                <a href="#" class="btn btn-primary" style="width:100%" rel="modal:close">確定</a>
+            </div>
+            
          </div>
     </div>
 
