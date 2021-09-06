@@ -155,7 +155,7 @@
     </div>
 
     <!-- AJAX response must be wrapped in the modal's root class. -->
-    <div class="modal" id="myModal" style="height: 500px; overflow: overlay; padding-top: 40px; padding-left: 15px; padding-right: 15px;">
+    <div class="modal" id="myModal" style="height: 620px; overflow-y: overlay; padding-top: 40px; padding-left: 15px; padding-right: 15px;">
         <div>
             <ul style="padding: 0px;">
                 <div>
