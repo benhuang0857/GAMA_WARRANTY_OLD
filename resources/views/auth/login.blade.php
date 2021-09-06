@@ -65,6 +65,10 @@
                                     登入
                                 </button>
 
+                                <a class="btn btn-primary" href="{{ route('register') }}">
+                                    註冊成為會員
+                                </a>
+                                
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     忘記密碼？
                                 </a>
