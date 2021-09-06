@@ -24,7 +24,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
 </head>
-
+<style>
+    .page-wrapper {
+        background: #ffffff;
+        position: relative;
+        background-image: url('/images/site/GAMA_BG.jpg');
+    }
+</style>
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

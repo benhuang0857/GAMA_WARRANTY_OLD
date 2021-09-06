@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-.page-wrapper {
-    background: #ffffff;
-    position: relative;
-    background-image: url('/images/site/GAMA_BG.jpg');
-}
-</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
