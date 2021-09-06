@@ -136,4 +136,10 @@ class WarrantyFormPageController extends Controller
             return 'error';
         }
     }
+
+    public function getWarrantyPDF($card_id)
+    {
+        $warrantyCard = WarrantyCard::where('card_id', $card_id)->first();
+        return view('warrantypdf')->with('CARD', $warrantyCard);
+    }
 }

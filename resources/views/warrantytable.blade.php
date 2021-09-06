@@ -33,7 +33,7 @@
                                 @else
                                 <td><span class="badge rounded-pill bg-success">通過</span></td>
                                 @endif
-                                <td><a href="{{asset('/upload')}}/{{$card->card_pic_src}}">查看</a></td>
+                                <td><a href="/my_warranty/{{$card->card_id}}">查看</a></td>
                             </tr>
                             @endforeach
                         </tbody>
