@@ -10,9 +10,12 @@
     }
     .modal a.close-modal
     {
+        /*
         position: absolute;
         top: -1px !important;
         right: -1px !important;
+        */
+        display: none;
     }
 </style>
 
