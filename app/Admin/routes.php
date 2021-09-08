@@ -19,4 +19,5 @@ Route::group([
     $router->resource('gama_point_logs', GamaPointLogController::class);
     $router->resource('gama_trans_logs', GamaTransLogController::class);
     $router->resource('for_check_warranties', CheckWarrantyController::class);
+    $router->resource('point_products', PointProductController::class);
 });

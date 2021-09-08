@@ -11,23 +11,25 @@
                 </h2>
             </div>
 
+            @foreach ($Products as $product)
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{asset('images/site/better.jpg')}}" alt="Card image cap">
+                <img class="card-img-top" src="{{asset('/upload/'.$product->image)}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">華城點數5000點</h5>
-                    <p class="card-text">價格：500 GAMA點數</p>
+                    <h5 class="card-title">{{$product->name}}</h5>
+                    <p class="card-text">價格：{{$product->price}} GAMA點數</p>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                         使用GAMA點數購買
                     </button>
                 </div>
             </div>
+            @endforeach
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">購買5000點</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{$product->name}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -35,10 +37,10 @@
                     <div class="modal-body">
                         <form method="POST" action="/transpoint">
                             @csrf
-                            <input  type="text" class="form-control" id="user-uniqid" name="user-uniqid" value="{{Auth()->user()->uniqid}}">
+                            <input style="display: none"  type="text" class="form-control" id="user-uniqid" name="user-uniqid" value="{{Auth()->user()->uniqid}}">
                             <div class="form-group pb-3">
                                 <label for="product-name" class="pb-1">商品名稱</label>
-                                <input type="text" class="form-control" id="product-name" name="product-name" value="兌換5000點充電點數" readonly>
+                                <input type="text" class="form-control" id="product-name" name="product-name" value="{{$product->name}}" readonly>
                             </div>
                             <div class="form-group pb-3">
                                 <label for="user-mobile" class="pb-1">手機(華城手機APP註冊號)</label>
@@ -50,7 +52,7 @@
                             </div>
                             <div class="form-group pb-3">
                                 <label for="price" class="pb-1">GAMA點數兌換</label>
-                                <input type="number" class="form-control" id="price" name="price" value="500" readonly>
+                                <input type="number" class="form-control" id="price" name="price" value="{{$product->price}}" readonly>
                             </div>
                             <div class="form-group pb-3">
                                 <a style="width:100%" type="submit" class="btn btn-secondary btn-sm" id="pass">確認兌換</a>

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GamaTransLog;
+use App\PointProduct;
 use App\User;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('productpage');
+        $PointProduct = PointProduct::all();
+        return view('productpage')->with('Products', $PointProduct);
     }
 
     public function transpoint(Request $req)
