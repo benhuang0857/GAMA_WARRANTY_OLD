@@ -3,8 +3,8 @@
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container" style="margin-top:100px; margin-bottom:100px">
-    <div class="row justify-content-center">
-        <div class="col-md-6" id="warranty-area">
+    <div class="row">
+        <div class="col-md-12" id="warranty-area">
             <div class="form-group pb-3">
                 <h2>
                     申請兌換充電里程
@@ -12,8 +12,8 @@
             </div>
 
             @foreach ($Products as $product)
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{asset('/upload/'.$product->image)}}" alt="Card image cap">
+            <div class="card float-left" style="width: 18rem; margin:10px">
+                <img class="card-img-top" height="150px" src="{{asset('/upload/'.$product->image)}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
                     <p class="card-text">價格：{{$product->price}} GAMA點數</p>
