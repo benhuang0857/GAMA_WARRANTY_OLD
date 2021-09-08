@@ -35,15 +35,15 @@
                 <div id="lockit" class="cantsee">
                     <div class="form-group pb-3">
                         <label for="user-email" class="pb-1">Email</label>
-                        <input type="email" class="form-control" id="user-email" name="user-email" aria-describedby="emailHelp" placeholder="請輸入Email" value="{{$Data['Auth']->email}}" required>
+                        <input type="email" class="form-control" id="user-email" name="user-email" aria-describedby="emailHelp" placeholder="請輸入Email" value="{{$Data['Auth']->email}}" required readonly>
                     </div>
                     <div class="form-group pb-3">
                         <label for="user-mobile" class="pb-1">手機</label>
-                        <input type="text" class="form-control" id="user-mobile" name="user-mobile" value="{{$Data['Auth']->mobile}}" required>
+                        <input type="text" class="form-control" id="user-mobile" name="user-mobile" value="{{$Data['Auth']->mobile}}" required readonly>
                     </div>
                     <div class="form-group pb-3">
                         <label for="user-name" class="pb-1">姓名</label>
-                        <input type="text" class="form-control" id="user-name" name="user-name" value="{{$Data['Auth']->name}}" required>
+                        <input type="text" class="form-control" id="user-name" name="user-name" value="{{$Data['Auth']->name}}" required readonly>
                     </div>
                     <div class="form-group pb-3">
                         <label for="user-address" class="pb-1">住址</label>
