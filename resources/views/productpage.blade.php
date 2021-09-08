@@ -7,7 +7,7 @@
         <div class="col-md-12" id="warranty-area">
             <div class="form-group pb-3">
                 <h2>
-                    申請兌換充電里程
+                    申請兌換禮品
                 </h2>
             </div>
 
