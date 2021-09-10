@@ -79,7 +79,8 @@
         border-radius: 100%;
         background: black;
         color: white;
-        border: solid 1px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        border: solid 0px;" 
+        type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
         <img src="{{asset('images/site/box.png')}}" width="30px" alt=""
