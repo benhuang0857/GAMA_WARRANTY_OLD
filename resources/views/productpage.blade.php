@@ -17,15 +17,14 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
                     <p class="card-text">價格：{{$product->price}} GAMA點數</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$product->id}}">
                         使用GAMA點數購買
                     </button>
                 </div>
             </div>
-            @endforeach
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -62,6 +61,8 @@
                 </div>
                 </div>
             </div>
+
+            @endforeach
         </div>
     </div>
 </div>
