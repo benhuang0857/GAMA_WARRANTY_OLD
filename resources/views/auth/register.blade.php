@@ -2,11 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center shadow_box">
+        <img src="{{asset('/images/site/BIG_GAMA.png')}}" class="center" alt="">
+        <h3 style="text-align: center">註冊成為GAMA會員</h3>
+        <div style="width: 100%; padding:6px; background:rgb(245, 153, 32);color:white;text-align: center">註冊成為GAMA會員</div>
+
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">註冊成為GAMA會員</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf

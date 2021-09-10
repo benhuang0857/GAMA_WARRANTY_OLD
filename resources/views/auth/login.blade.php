@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <img src="{{asset('/images/site/BIG_GAMA.jpg')}}" width="100%" alt="">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="row justify-content-center shadow_box">
+        <img src="{{asset('/images/site/BIG_GAMA.png')}}" class="center" alt="">
+        <h3 style="text-align: center">歡迎進入GAMA推薦專區</h3>
+        <div style="width: 100%; padding:6px; background:rgb(245, 153, 32);color:white;text-align: center">LOGIN</div>
 
+        <div class="col-md-8" style="margin: 0px">
+            <div class="card">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
@@ -61,10 +62,6 @@
 
                                 <a class="btn btn-primary" href="{{ route('register') }}">
                                     註冊成為會員
-                                </a>
-                                
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    忘記密碼？
                                 </a>
                             </div>
                         </div>

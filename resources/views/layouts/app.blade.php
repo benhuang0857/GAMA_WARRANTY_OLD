@@ -26,10 +26,32 @@
 </head>
 <style>
     .page-wrapper {
-        background: #ffffff;
+        background:linear-gradient(75deg,#aaa9ab, white);
         position: relative;
-        background-image: url('/images/site/GAMA_BG.jpg');
+        /*background-image: url('/images/site/GAMA_BG.png') no-repeat center;*/   
     }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .shadow_box
+    {
+        background: white;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .btn-primary
+    {
+        background: #192471 !important;
+        border: #192471 !important;
+    }
+
 </style>
 <body>
     <!-- ============================================================== -->
@@ -51,7 +73,7 @@
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header" data-logobg="skin6">
+                <div class="navbar-header" data-logobg="skin6" style="background: gray">
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
@@ -59,7 +81,7 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img src="{{asset('images/site/LOGO.png')}}" width="80" style="padding: 10px" alt="homepage" />
+                            <img src="{{asset('images/site/LOGO.png')}}" width="115" style="padding: 10px" alt="homepage" />
                         </b>
                         <!--End Logo icon -->
                     </a>
@@ -223,6 +245,29 @@
             var audio = document.getElementById("audio");
             audio.play();
         }
+
+        function myFunction_mobile() {
+            /* Get the text field */
+            var copyText = document.getElementById("recommand_url");
+        
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        
+            /* Copy the text inside the text field */
+            //navigator.clipboard.writeText(copyText.value);
+
+            if (navigator.share) {
+            navigator.share({
+                title: 'GAMA點數大放送',
+                text: copyText.value,
+                url: copyText,
+            })
+                .then(() => console.log('成功！'))
+                .catch((error) => console.log('發生錯誤', error));
+            }
+        }
+
     </script>
 </body>
 
