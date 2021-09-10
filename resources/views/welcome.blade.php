@@ -27,13 +27,14 @@
                 <span style="font-size: 22px;">保證卡</span>
                 </h2>
             </div>
-            <form method="POST" action="/postwarranty">
+            <form method="POST" action="/postwarranty" class="shadow_box" style="padding: 10px">
                 @csrf
                 <div class="form-group pb-3">
                     <label for="check-code" class="pb-1">請先填寫保卡號碼</label>
                     <span id="check_status">
                     </span>
                     <input type="text" class="form-control" id="check-code" name="check-code" placeholder="保卡號碼" required>
+                    <a href="#" class="btn btn-primary" id="next" style="margin-top: 5px">下一步</a>
                 </div>
                 <div id="lockit" class="cantsee">
                     <div class="form-group pb-3">
@@ -190,7 +191,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $("#check-code").on('input', function(){
+    $("#next").on('click', function(){
         $.ajax({
             type: "GET",
             url: '/check_code',

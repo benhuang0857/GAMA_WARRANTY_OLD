@@ -75,6 +75,7 @@
     <div class="modal-content" style="height: 800px; overflow-x: hidden; 
     overflow-y: auto; color:white; background:rgb(0, 0, 0)">
     <button style="position: absolute;
+        width:25px;
         border-radius: 100%;
         background: black;
         color: white;
