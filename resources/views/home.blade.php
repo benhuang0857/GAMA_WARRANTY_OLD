@@ -94,17 +94,13 @@
         
         </div>
         <div class="modal-body">
-            <div style="text-align: center">
+            <div style="text-align: left">
                 <p>
-                    在您選擇GAMA翠光產品的同時，您也享有最尊貴的禮遇。
-感謝您選擇GAMA翠光產品，我們相信，對於舒適以及生活品味的追求，您一定會有全新的定義。
-品質保證是我們的自我期許，關於GAMA隔熱膜的品質，請您務必遵守，「照顧並且保養GAMA隔熱膜的秘訣」。
-此產品非屬永恆性產品，若用於建築上會因使用條件同而影響效能，保固期限請參考興展科技總代理所提供之建議。
-歡迎加入GAMA之友即可有機會獲的免費的施工卷、折價卷及新品試用的機會
+                    在您選擇GAMA翠光產品的同時，您也享有最尊貴的禮遇。 感謝您選擇GAMA翠光產品，我們相信，對於舒適以及生活品味的追求，您一定會有全新的定義。 品質保證是我們的自我期許，關於GAMA隔熱膜的品質，請您務必遵守，「照顧並且保養GAMA隔熱膜的秘訣」。 此產品非屬永恆性產品，若用於建築上會因使用條件同而影響效能，保固期限請參考興展科技總代理所提供之建議。 歡迎加入GAMA之友即可有機會獲的免費的施工卷、折價卷及新品試用的機會。
                 </p>
             </div>
             <button style="width:100%; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製分享連結</button>
-            <button style="width:100%" class="btn btn-outline-secondary" type="button">我的推薦人</button>
+            <!--<button style="width:100%" class="btn btn-outline-secondary" type="button">我的推薦人</button>-->
         </div>
     </div>
     </div>
