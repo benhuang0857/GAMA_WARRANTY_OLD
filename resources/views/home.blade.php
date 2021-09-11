@@ -104,7 +104,7 @@
                 </p>
             </div>
             <button style="width:100%; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製分享連結</button>
-            <button style="width:100%" class="btn btn-outline-secondary" type="button" onclick="myFunction_mobile()">分享給好友</button>
+            <button style="width:100%" class="btn btn-outline-secondary" type="button">我的推薦人</button>
         </div>
     </div>
     </div>

@@ -54,7 +54,7 @@
                                 <input type="number" class="form-control" id="price" name="price" value="{{$product->price}}" readonly>
                             </div>
                             <div class="form-group pb-3">
-                                <a style="width:100%" type="submit" class="btn btn-secondary btn-sm" id="pass">確認兌換</a>
+                                <a style="width:100%" type="submit" class="btn btn-secondary btn-sm pass">確認兌換</a>
                             </div>
                         </form>
                     </div>
@@ -75,11 +75,96 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script>
-    $('#pass').click(function(){
+    // $('.pass').click(function(){
+
+    //     var fill_all = false;
+    //     $(this)('input[type="text"]').each(function() {
+    //         if ($(this).val() == "") {
+    //             Swal.fire({
+    //                 icon: 'error',
+    //                 confirmButtonColor: 'red',
+    //                 title: '請填寫表單欄位',
+    //                 showClass: {
+    //                     popup: 'animate__animated animate__fadeInDown'
+    //                 },
+    //                 hideClass: {
+    //                     popup: 'animate__animated animate__fadeOutUp'
+    //                 }
+    //             })
+    //             fill_all = false;
+    //         }
+    //         else
+    //         {
+    //             fill_all = true;
+    //         }
+            
+    //     });
+
+    //     if(fill_all == true){
+    //         var product_group = $('#product-group :input').serializeArray();
+    //         console.log(product_group);
+    //         $.ajax({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             type: "POST",
+    //             url: '/transpoint',
+    //             data: {
+    //                 'user_uniqid': $('#user-uniqid').val(),
+    //                 'user_name': $('#user-name').val(),
+    //                 'user_mobile': $('#user-mobile').val(),
+    //                 'product_name': $('#product-name').val(),
+    //                 'price': $('#price').val(),
+    //             },
+    //             dataType: 'html',
+    //             success: function (response) {
+    //                 if(response == 'error')
+    //                 {
+    //                     Swal.fire({
+    //                         icon: 'error',
+    //                         confirmButtonColor: '#6c757d',
+    //                         title: '失敗',
+    //                         showClass: {
+    //                             popup: 'animate__animated animate__fadeInDown'
+    //                         },
+    //                         hideClass: {
+    //                             popup: 'animate__animated animate__fadeOutUp'
+    //                         }
+    //                     }).then((result) =>{
+    //                         window.location.reload();
+    //                     });
+    //                 }
+    //                 else
+    //                 {
+    //                     Swal.fire({
+    //                         icon: 'success',
+    //                         confirmButtonColor: '#6c757d',
+    //                         title: '兌換成功',
+    //                         showClass: {
+    //                             popup: 'animate__animated animate__fadeInDown'
+    //                         },
+    //                         hideClass: {
+    //                             popup: 'animate__animated animate__fadeOutUp'
+    //                         }
+    //                     }).then((result) =>{
+    //                         window.location.reload();
+    //                     });
+    //                 }
+    //             },
+    //         });
+    //     }
+    // });
+
+    $(".pass").click(function(){
 
         var fill_all = false;
-        $('input[type="text"]').each(function() {
-            if ($(this).val() == "") {
+
+        var passfrom = $(this).closest("form").find('input[type="text"]');
+
+        for(var i=0; i<passfrom.length; i++)
+        {
+            console.log(passfrom.eq(i).val());
+            if ( passfrom.eq(i).val() == '' ) {
                 Swal.fire({
                     icon: 'error',
                     confirmButtonColor: 'red',
@@ -97,11 +182,10 @@
             {
                 fill_all = true;
             }
-            
-        });
+        }
 
         if(fill_all == true){
-            var product_group = $('#product-group :input').serializeArray();
+            var product_group = $(this).closest("form").find('input[type="text"]').serializeArray();
             console.log(product_group);
             $.ajax({
                 headers: {
@@ -110,11 +194,16 @@
                 type: "POST",
                 url: '/transpoint',
                 data: {
-                    'user_uniqid': $('#user-uniqid').val(),
-                    'user_name': $('#user-name').val(),
-                    'user_mobile': $('#user-mobile').val(),
-                    'product_name': $('#product-name').val(),
-                    'price': $('#price').val(),
+                    // 'user_uniqid': $('#user-uniqid').val(),
+                    // 'user_name': $('#user-name').val(),
+                    // 'user_mobile': $('#user-mobile').val(),
+                    // 'product_name': $('#product-name').val(),
+                    // 'price': $('#price').val(),
+                    'user_uniqid': $(this).closest("form").find('#user-uniqid').val(),
+                    'user_name': $(this).closest("form").find('#user-name').val(),
+                    'user_mobile': $(this).closest("form").find('#user-mobile').val(),
+                    'product_name': $(this).closest("form").find('#product-name').val(),
+                    'price': $(this).closest("form").find('#price').val()
                 },
                 dataType: 'html',
                 success: function (response) {
@@ -154,6 +243,7 @@
             });
         }
     });
+
 </script>
 
 @endsection
