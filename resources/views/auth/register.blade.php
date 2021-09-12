@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center shadow_box">
         <img src="{{asset('/images/site/BIG_GAMA.png')}}" class="center" alt="">
-        <h3 style="text-align: center">註冊成為GAMA會員</h3>
+        <h3 style="text-align: center">註冊成為GAMA會員(Sign up GAMA)</h3>
         <div style="width: 100%; padding:6px; background:rgb(245, 153, 32);color:white;text-align: center">註冊成為GAMA會員</div>
 
         <div class="col-md-8">
@@ -14,7 +14,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">姓名</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">姓名(Your Name)</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-md-4 col-form-label text-md-right">手機</label>
+                            <label for="mobile" class="col-md-4 col-form-label text-md-right">手機(Mobile)</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required>
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">地址</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">地址(Address)</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" name="address" required autofocus>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">密碼</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">密碼(Password)</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">確認密碼</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">確認密碼(Comfirm password)</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -88,7 +88,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    註冊
+                                    註冊(Submit)
                                 </button>
                             </div>
                         </div>
