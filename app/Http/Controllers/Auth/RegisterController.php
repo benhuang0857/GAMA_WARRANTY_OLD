@@ -71,7 +71,7 @@ class RegisterController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->mobile = $data['mobile'];
-        $user->address = $data['address'];
+        //$user->address = $data['address'];
         $user->password = bcrypt($data['password']);
         //$user->gama_point = 100;
         $user->save();

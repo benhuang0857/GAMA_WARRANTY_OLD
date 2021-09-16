@@ -12,8 +12,8 @@
 */
 
 Auth::routes();
-Route::get('/warranty', 'WarrantyFormPageController@index')->middleware('auth');
-Route::get('/warranty/{uid}', 'WarrantyFormPageController@index')->middleware('auth');
+Route::get('/warranty', 'WarrantyFormPageController@index');
+Route::get('/warranty/{uid}', 'WarrantyFormPageController@index');
 Route::get('/my_warranty', 'WarrantyFormPageController@warrantytable')->middleware('auth');
 Route::get('/my_warranty/{card_id}', 'WarrantyFormPageController@getWarrantyPDF')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

@@ -28,12 +28,20 @@ class WarrantyCardController extends AdminController
     {
         $grid = new Grid(new WarrantyCard());
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->like('check_code', '保卡編號');
+            $filter->like('name', '用戶名');
+            $filter->like('mobile', '手機號');
+            $filter->equal('status', '狀態')->select(['ON' => '啟用', 'OFF' => '未啟用']);
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('check_code', '保卡編號')->width(130);
         $grid->column('name', '用戶名')->width(80);
         $grid->column('mobile', '手機')->width(120);
-        //$grid->column('address', '地址')->width(200);
-        $grid->column('email', __('Email'))->width(200);
+        $grid->column('address', '地址')->width(200);
+        //$grid->column('email', __('Email'))->width(200);
         $grid->column('car_license', '車牌')->width(80);
         $grid->column('car_brand', '車子品牌')->width(80);
         $grid->column('carname', '車子款式')->width(80);
@@ -53,8 +61,8 @@ class WarrantyCardController extends AdminController
                 return '<span class="badge rounded-pill" style="background-color:red">審核中</span>';
             }
         })->width(100);
-        $grid->column('created_at', '建立日期')->width(100);
-        $grid->column('enddate', '到期日')->width(100);
+        //$grid->column('created_at', '建立日期')->width(100);
+        //$grid->column('enddate', '到期日')->width(100);
         //$grid->column('updated_at', '更新日期');
 
         return $grid;

@@ -6,8 +6,7 @@
     <div class="col-lg">
         <div class="card">
             <div class="card-body">
-                <div style="background-image: url('/images/site/WARRANTY_BG.jpeg'); background-size:     cover;                      /* <------ */
-                    background-repeat: no-repeat;">
+                <div>
                     <h3>GAMA INNOVATION CORP 隔熱膜產品保證書</h3>
                     <strong>客戶姓名：</strong>{{$CARD->name}}<br>
                     車品/型號 :{{$CARD->car_brand}}<br>

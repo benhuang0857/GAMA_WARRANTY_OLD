@@ -132,8 +132,16 @@
                     <!-- pass json body end -->
 
                     <div class="form-group pb-3">
+                        <!--
                         <label for="store" class="pb-1">施工店家</label>
                         <input type="text" class="form-control" id="store" name="store">
+                        -->
+                        <label for="store" class="pb-1">施工店家</label>
+                        <select class="form-control" id="store" name="store" required>
+                            @foreach ($Data['AllStores'] as $item)
+                            <option value="{{$item->name}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group pb-3">
@@ -146,9 +154,9 @@
                         <input type="text" class="form-control" id="price" name="price">
                     </div>
 
-                    <div class="form-group pb-3" style="display: none">
-                        <label for="recommand" class="pb-1">推薦人</label>
-                        <input type="text" class="form-control" id="recommand" name="recommand" value="{{$Data['Recommand']}}" readonly>
+                    <div class="form-group pb-3">
+                        <label for="recommand" class="pb-1">推薦人代碼</label>
+                        <input type="text" class="form-control" id="recommand" name="recommand" value="{{$Data['Recommand']}}">
                     </div>
                     <div class="form-group pb-3">
                         <a style="width:100%" type="submit" class="btn btn-secondary btn-sm" id="pass">註冊保證卡</a>

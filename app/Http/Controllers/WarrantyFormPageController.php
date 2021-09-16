@@ -10,34 +10,43 @@ use App\Product;
 use App\Brand;
 use App\GamaPointLog;
 use App\User;
+use App\GAMAStore;
 use Auth;
 
 class WarrantyFormPageController extends Controller
 {
-    public function __construct()
+    public function __construct(Request $req)
     {
+        //$this->middleware('auth');
+
+        try {
+            $url = \Request::getRequestUri();
+            $url_arr = explode('/', $url);
+            setcookie("_UID", $url_arr[2]);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $this->middleware('auth');
     }
     
     public function index($uid = null)
     {
-        if($uid == null)
-        {
+        try {
+            $recommand = $_COOKIE['_UID'];
+        } catch (\Throwable $th) {
             $recommand = 'no';
-        }
-        else
-        {
-            $recommand = $uid;
         }
         
         $products = Product::all();
         $brands = Brand::all();
+        $allstores = GAMAStore::all();
 
         $data = [
             'Auth'     => Auth::user(),
             'Products' => $products,
             'Brands'   => $brands,
-            'Recommand'=> $recommand
+            'Recommand'=> $recommand,
+            'AllStores'=> $allstores
         ];
 
         return view('welcome')->with('Data', $data);
