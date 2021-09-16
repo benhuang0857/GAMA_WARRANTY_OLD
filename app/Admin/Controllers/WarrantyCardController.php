@@ -61,7 +61,7 @@ class WarrantyCardController extends AdminController
                 return '<span class="badge rounded-pill" style="background-color:red">審核中</span>';
             }
         })->width(100);
-        //$grid->column('created_at', '建立日期')->width(100);
+        $grid->column('created_at', '建立日期')->sortable()->width(100);
         //$grid->column('enddate', '到期日')->width(100);
         //$grid->column('updated_at', '更新日期');
 
