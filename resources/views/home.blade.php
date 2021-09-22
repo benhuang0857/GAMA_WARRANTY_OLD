@@ -30,6 +30,18 @@
 
     <div class="row justify-content-center shadow_box_2" style="margin-bottom:30px ">
         <div class="col-lg">
+            <div class="white-box analytics-info">
+                <label class="col-md-12 p-0">分享連結</label>
+                <div class="input-group mb-3">
+                    <input type="text" value="{{$Data['Recommand_URL']}}" id="recommand_url" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製連結</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center shadow_box_2" style="margin-bottom:30px ">
+        <div class="col-lg">
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal form-material">
@@ -57,11 +69,11 @@
                                 <input type="text" placeholder="Johnathan Doe" class="form-control p-0 border-0" value="{{$Data['User']->address}}" readonly>
                             </div>
                         </div>
-                        <label class="col-md-12 p-0">分享連結</label>
-                        <div class="input-group mb-3">
-                            <input type="text" value="{{$Data['Recommand_URL']}}" id="recommand_url" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製連結</button>
+
+                        <div class="form-group pb-3">
+                            <a href="/edit_profile" style="width:100%" type="submit" class="btn btn-secondary btn-sm pass">修改資料</a>
                         </div>
+
                     </form>
                 </div>
             </div>

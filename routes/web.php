@@ -17,6 +17,8 @@ Route::get('/warranty/{uid}', 'WarrantyFormPageController@index');
 Route::get('/my_warranty', 'WarrantyFormPageController@warrantytable')->middleware('auth');
 Route::get('/my_warranty/{card_id}', 'WarrantyFormPageController@getWarrantyPDF')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/edit_profile', 'HomeController@editPage')->name('edit_profile')->middleware('auth');
+Route::post('/edit_profile/submit', 'HomeController@update')->name('profile_update')->middleware('auth');
 Route::get('/', 'HomeController@index')->middleware('auth');
 
 Route::get('/point_products', 'ProductController@index')->middleware('auth');

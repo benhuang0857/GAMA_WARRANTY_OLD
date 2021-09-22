@@ -34,4 +34,34 @@ class HomeController extends Controller
 
         return view('home')->with('Data', $data);
     }
+
+    public function editPage()
+    {
+        $user = Auth::user();
+
+        $data = [
+            'User' => $user
+        ];
+
+        return view('editprofile')->with('Data', $data);
+    }
+
+    public function update(Request $req)
+    {
+        $user = Auth::user();
+
+        $user->name    = $req->input('name');
+        $user->email   = $req->input('email');
+        $user->mobile  = $req->input('mobile');
+        $user->address = $req->input('address');
+
+        if( $req->input('password') != null )
+        {
+            $user->password = bcrypt($req->input('password'));
+        }
+
+        $user->save();
+
+        return redirect()->back();
+    }
 }
