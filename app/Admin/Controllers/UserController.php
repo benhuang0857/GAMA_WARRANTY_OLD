@@ -89,6 +89,10 @@ class UserController extends AdminController
         $form->email('email', __('Email'));
         $form->mobile('mobile', '電話')->options(['mask' => '99-9999-9999']);
         $form->password('password', '密碼');
+        $form->select('status', '保卡狀態')->options([
+            'OFF' => '未啟用',
+            'ON' => '啟用',
+        ]);
         $form->saving(function (Form $form) {
             if ($form->password == null)
             {

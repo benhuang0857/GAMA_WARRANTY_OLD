@@ -128,36 +128,39 @@
                                 </a>
                             </li>
                         @else
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="#" aria-expanded="false">
-                                    <i class="fa fa-diamond" aria-hidden="true">G+</i>
-                                    <span class="hide-menu">GAMA點數：{{Auth()->user()->gama_point}}</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/home" aria-expanded="false">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span class="hide-menu">個人資料</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/warranty" aria-expanded="false">
-                                    <i class="fas fa-clipboard-check" aria-hidden="true"></i>
-                                    <span class="hide-menu">保卡申請</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products" aria-expanded="false">
-                                    <i class="fas fa-bolt" aria-hidden="true"></i>
-                                    <span class="hide-menu">申請兌換禮品</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/my_warranty" aria-expanded="false">
-                                    <i class="fas fa-window-maximize" aria-hidden="true"></i>
-                                    <span class="hide-menu">您的保固資訊</span>
-                                </a>
-                            </li>
+                            @if (Auth::user()->status == 'ON')
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="#" aria-expanded="false">
+                                        <i class="fa fa-diamond" aria-hidden="true">G+</i>
+                                        <span class="hide-menu">GAMA點數：{{Auth()->user()->gama_point}}</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/home" aria-expanded="false">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span class="hide-menu">個人資料</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/warranty" aria-expanded="false">
+                                        <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                                        <span class="hide-menu">保卡申請</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products" aria-expanded="false">
+                                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                                        <span class="hide-menu">申請兌換禮品</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/my_warranty" aria-expanded="false">
+                                        <i class="fas fa-window-maximize" aria-hidden="true"></i>
+                                        <span class="hide-menu">您的保固資訊</span>
+                                    </a>
+                                </li>
+                            @endif
+
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" aria-expanded="false">
