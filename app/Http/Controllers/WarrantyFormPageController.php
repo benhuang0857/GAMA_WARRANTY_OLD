@@ -12,6 +12,7 @@ use App\GamaPointLog;
 use App\User;
 use App\GAMAStore;
 use Auth;
+use PDF;
 
 class WarrantyFormPageController extends Controller
 {
@@ -148,7 +149,13 @@ class WarrantyFormPageController extends Controller
 
     public function getWarrantyPDF($card_id)
     {
-        $warrantyCard = WarrantyCard::where('card_id', $card_id)->first();
-        return view('warrantypdf')->with('CARD', $warrantyCard);
+
+        $data = WarrantyCard::where('card_id', $card_id)->first();
+        $pdf = PDF::loadView('warrantypdf', array('CARD' => $data));
+        //$pdf->stream('gama.pdf');
+        return $pdf->download('gama.pdf'); 
+
+        // $warrantyCard = WarrantyCard::where('card_id', $card_id)->first();
+        // return view('warrantypdf')->with('CARD', $warrantyCard);
     }
 }
