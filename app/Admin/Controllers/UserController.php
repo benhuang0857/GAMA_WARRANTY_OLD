@@ -26,6 +26,14 @@ class UserController extends AdminController
     {
         $grid = new Grid(new User());
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->like('name', '用戶名');
+            $filter->like('mobile', '手機號');
+            $filter->like('email', '手機號');
+            $filter->equal('status', '狀態')->select(['ON' => '啟用', 'OFF' => '未啟用']);
+        });
+        
         $grid->column('id', __('Id'));
         $grid->column('name', '姓名');
         $grid->column('email', __('Email'));
@@ -44,8 +52,8 @@ class UserController extends AdminController
                 return '<span class="badge rounded-pill" style="background-color:red">審核中</span>';
             }
         });
-        $grid->column('created_at', '創建時間');
-        $grid->column('updated_at', '更新時間');
+        $grid->column('created_at', '創建時間')->sortable();
+        //$grid->column('updated_at', '更新時間');
 
         return $grid;
     }

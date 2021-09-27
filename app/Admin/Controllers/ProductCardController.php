@@ -26,12 +26,18 @@ class ProductCardController extends AdminController
     {
         $grid = new Grid(new Product());
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->like('name', '商品名稱');
+            $filter->equal('status', '狀態')->select(['ON' => '啟用', 'OFF' => '未啟用']);
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('sku', __('Sku'));
         $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->sortable();
+        //$grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
