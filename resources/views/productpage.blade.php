@@ -12,7 +12,7 @@
             </div>
 
             @foreach ($Products as $product)
-            <div class="card float-left" style="width: 18rem; margin:10px">
+            <div class="card float-left" style="width: 18rem; height:300px; margin:10px">
                 <img class="card-img-top" height="150px" src="{{asset('/upload/'.$product->image)}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
