@@ -94,6 +94,30 @@
                     <li>再黏貼GAMA隔熱膜之後，或許在玻璃上會出現些微「霧狀」，這是正常現象並且會在四至十周內消失，同時假設發生小氣泡，也會逐漸消失。</li>
                     <li>如果接縫線出現在彎曲的車窗上，請以多層連接的方式來達成您對美觀的要求。</li>
                 </ul>
+
+                <h3>Congratulations on choosing GAMA Cuiguang products.</h3><br>
+                When you choose GAMA Cuiguang products, you also enjoy the most noble courtesy.
+                Thank you for choosing GAMA Cuiguang products. We believe that you will have a new definition of the pursuit of comfort and life taste.
+                Quality assurance is our self-permission. Regarding the quality of GAMA insulation film, please abide by the "care and maintenance of the secrets of GAMA insulation film".
+                This product is not a permanent product. If it is used in architecture, it will affect the efficiency due to the same use conditions. Please refer to the recommendation provided by the general agent of Xingzhan Technology for the warranty period.
+                Welcome to join Friends of GAMA to get free construction rolls, discount coupons and new product trial opportunities.<br>
+                <br>
+                <ul>
+                    <li>FB :www.facebook.com/GREENGAMA</li>
+                    <li>LINE ID : @gamagroup</li>
+                    <li>WECHAT ID : gama-service</li>
+                </ul>
+                Take care of the secret of GAMA insulation film<br>
+                <ul>
+                    <li>After sticking to the GAMA insulation film, please do not close the window within 48 hours.</li>
+                    <li>To ensure the tightness between the GAMA insulation film and the glass, please do not wash the car within seven days.</li>
+                    <li>Please do not use alcohol and ammonia cleaning, or scrub paper to clean the GAMA insulation film. Please wipe it with warm water and cloth.</li>
+                    <li>Please do not stick any stickers or related materials to the GAMA insulation film.</li>
+                    <li>Please do not touch the edge of the insulation film and the glass, which may cause the insulation paper to fall off.</li>
+                    <li>After sticking to the GAMA insulation film, there may be some slight "symptoms" on the glass, which is normal and will disappear within four to ten weeks. At the same time, it is assumed that small bubbles will disappear gradually.</li>
+                    <li>If the wiring appears on the curved window, please meet your aesthetic requirements in a multi-layer connection.</li>
+                </ul>
+
             </div>
             <img src="{{asset('/images/site/LOGIN_FAM_PIC.jpeg')}}" width="100%" alt="">
         </div>
