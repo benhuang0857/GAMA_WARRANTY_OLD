@@ -29,8 +29,9 @@ class UserController extends AdminController
         $grid->filter(function($filter){
             $filter->disableIdFilter();
             $filter->like('name', '用戶名');
+            $filter->like('uniqid', '系統自動產生ID');
             $filter->like('mobile', '手機號');
-            $filter->like('email', '手機號');
+            $filter->like('email', 'Email');
             $filter->equal('status', '狀態')->select(['ON' => '啟用', 'OFF' => '未啟用']);
         });
         
