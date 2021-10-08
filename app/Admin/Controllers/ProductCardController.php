@@ -33,10 +33,10 @@ class ProductCardController extends AdminController
         });
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', '料號');
         $grid->column('sku', __('Sku'));
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'))->sortable();
+        $grid->column('status', '狀態');
+        $grid->column('created_at', '建立時間')->sortable();
         //$grid->column('updated_at', __('Updated at'));
 
         return $grid;
@@ -53,9 +53,9 @@ class ProductCardController extends AdminController
         $show = new Show(Product::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
+        $show->field('name', '料號');
         $show->field('sku', __('Sku'));
-        $show->field('status', __('Status'));
+        $show->field('status', '狀態');
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -71,9 +71,9 @@ class ProductCardController extends AdminController
     {
         $form = new Form(new Product());
 
-        $form->text('name', __('Name'));
+        $form->text('name', '料號');
         $form->text('sku', __('Sku'));
-        $form->select('status', __('Status'))->options([
+        $form->select('status', '狀態')->options([
             'OFF' => '未啟用',
             'ON' => '啟用',
         ]);
