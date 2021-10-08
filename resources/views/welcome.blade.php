@@ -199,6 +199,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    // 檢查碼填寫後檢查
     $("#next").on('click', function(){
         $.ajax({
             type: "GET",
@@ -222,6 +223,7 @@
         });
     });
 
+    // 動態增加商品輸入欄位
     var i = 2;
     $('.plus-dp').click(function(){
         $.ajax({
@@ -244,75 +246,125 @@
 
     $('#pass').click(function(){
 
-        var fill_all = false;
-        $('input[type="text"]').each(function() {
+        let fill_all = true;
+        $("input[type='text']").each(function() {
             if ($(this).val() == "") {
+                fill_all = false;
+            }         
+        });
+
+        if(fill_all == false)
+        {
+            Swal.fire({
+                icon: 'error',
+                confirmButtonColor: 'red',
+                title: '請填寫表單欄位',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+        }
+        else
+        {
+            passData();
+        }
+        
+        
+        // if(fill_all == true){
+        //     var product_group = $('#product-group :input').serializeArray();
+        //     console.log(product_group);
+        //     $.ajax({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         type: "POST",
+        //         url: '/postwarranty',
+        //         data: {
+        //             'check_code': $('#check-code').val(),
+        //             'user_name': $('#user-name').val(),
+        //             'user_mobile': $('#user-mobile').val(),
+        //             'user_email': $('#user-email').val(),
+        //             'user_address': $('#user-address').val(),
+        //             'user_carlicense': $('#user-carlicense').val(),
+        //             'user_carbrand': $('#user-carbrand').val(),
+        //             'user_carname': $('#user-carname').val(),
+        //             'warranty_type': $('#warranty-type').val(),
+        //             'store': $('#store').val(),
+        //             'construction_date': $('#construction_date').val(),
+        //             'price': $('#price').val(),
+        //             'recommand': $('#recommand').val(),
+        //             'product_group': product_group,
+        //         },
+        //         dataType: 'html',
+        //         success: function (response) {
+        //             Swal.fire({
+        //                 icon: 'success',
+        //                 confirmButtonColor: '#6c757d',
+        //                 title: '保證卡註冊成功',
+        //                 showClass: {
+        //                     popup: 'animate__animated animate__fadeInDown'
+        //                 },
+        //                 hideClass: {
+        //                     popup: 'animate__animated animate__fadeOutUp'
+        //                 }
+        //             }).then((result) =>{
+        //                 window.location.reload();
+        //             });
+                    
+        //         },
+        //     });
+        // }
+
+    });
+
+    function passData()
+    {
+        var product_group = $('#product-group :input').serializeArray();
+        console.log(product_group);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url: '/postwarranty',
+            data: {
+                'check_code': $('#check-code').val(),
+                'user_name': $('#user-name').val(),
+                'user_mobile': $('#user-mobile').val(),
+                'user_email': $('#user-email').val(),
+                'user_address': $('#user-address').val(),
+                'user_carlicense': $('#user-carlicense').val(),
+                'user_carbrand': $('#user-carbrand').val(),
+                'user_carname': $('#user-carname').val(),
+                'warranty_type': $('#warranty-type').val(),
+                'store': $('#store').val(),
+                'construction_date': $('#construction_date').val(),
+                'price': $('#price').val(),
+                'recommand': $('#recommand').val(),
+                'product_group': product_group,
+            },
+            dataType: 'html',
+            success: function (response) {
                 Swal.fire({
-                    icon: 'error',
-                    confirmButtonColor: 'red',
-                    title: '請填寫表單欄位',
+                    icon: 'success',
+                    confirmButtonColor: '#6c757d',
+                    title: '保證卡註冊成功',
                     showClass: {
                         popup: 'animate__animated animate__fadeInDown'
                     },
                     hideClass: {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
-                })
-                fill_all = false;
-            }
-            else
-            {
-                fill_all = true;
-            }
-            
+                }).then((result) =>{
+                    window.location.reload();
+                });
+                
+            },
         });
-
-        if(fill_all == true){
-            var product_group = $('#product-group :input').serializeArray();
-            console.log(product_group);
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: '/postwarranty',
-                data: {
-                    'check_code': $('#check-code').val(),
-                    'user_name': $('#user-name').val(),
-                    'user_mobile': $('#user-mobile').val(),
-                    'user_email': $('#user-email').val(),
-                    'user_address': $('#user-address').val(),
-                    'user_carlicense': $('#user-carlicense').val(),
-                    'user_carbrand': $('#user-carbrand').val(),
-                    'user_carname': $('#user-carname').val(),
-                    'warranty_type': $('#warranty-type').val(),
-                    'store': $('#store').val(),
-                    'construction_date': $('#construction_date').val(),
-                    'price': $('#price').val(),
-                    'recommand': $('#recommand').val(),
-                    'product_group': product_group,
-                },
-                dataType: 'html',
-                success: function (response) {
-                    Swal.fire({
-                        icon: 'success',
-                        confirmButtonColor: '#6c757d',
-                        title: '保證卡註冊成功',
-                        showClass: {
-                            popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                            popup: 'animate__animated animate__fadeOutUp'
-                        }
-                    }).then((result) =>{
-                        window.location.reload();
-                    });
-                    
-                },
-            });
-        }
-
-    });
+    }
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
