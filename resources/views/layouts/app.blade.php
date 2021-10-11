@@ -116,6 +116,12 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products_show" aria-expanded="false">
+                                    <i class="fas fa-gift" aria-hidden="true"></i>
+                                    <span class="hide-menu">Gama禮品</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('login') }}" aria-expanded="false">
                                     <i class="fas fa-bolt" aria-hidden="true"></i>
                                     <span class="hide-menu">{{ __('Login') }}</span>
@@ -149,7 +155,7 @@
                                 </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products" aria-expanded="false">
-                                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                                        <i class="fas fa-gift" aria-hidden="true"></i>
                                         <span class="hide-menu">申請兌換禮品</span>
                                     </a>
                                 </li>

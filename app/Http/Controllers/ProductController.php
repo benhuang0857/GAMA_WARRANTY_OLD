@@ -15,6 +15,12 @@ class ProductController extends Controller
         return view('productpage')->with('Products', $PointProduct);
     }
 
+    public function indexNologin()
+    {
+        $PointProduct = PointProduct::all();
+        return view('productpagenologin')->with('Products', $PointProduct);
+    }
+
     public function transpoint(Request $req)
     {
         $user = User::where( 'uniqid', $req->input('user_uniqid') )->first();
