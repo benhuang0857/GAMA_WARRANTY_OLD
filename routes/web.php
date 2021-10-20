@@ -21,6 +21,8 @@ Route::get('/edit_profile', 'HomeController@editPage')->name('edit_profile')->mi
 Route::post('/edit_profile/submit', 'HomeController@update')->name('profile_update')->middleware('auth');
 Route::get('/', 'HomeController@index')->middleware('auth');
 
+Route::get('/get_response_product', 'WarrantyFormPageController@reponseProduct');
+
 Route::get('/point_products', 'ProductController@index')->middleware('auth');
 Route::get('/point_products_show', 'ProductController@indexNologin');
 Route::post('/transpoint', 'ProductController@transpoint')->middleware('auth');

@@ -27,7 +27,21 @@
                 <span style="font-size: 22px;">保證卡</span>
                 </h2>
             </div>
-            <form method="POST" action="/postwarranty" class="shadow_box" style="padding: 10px">
+
+            <div id="warranty_type" style="
+                text-align: center;
+                padding: 80px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+            ">
+                <h3>請先選擇您的保卡類型</h3>
+                <a href="#" class="btn btn-secondary btn-lg" id="CPF" style="margin: 5px; width:80%">鍍膜</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%">隔熱紙</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%" disabled="disabled">建築物</a>
+            </div>
+
+            <form method="POST" action="/postwarranty" id="warranty_code" class="shadow_box" style="padding: 10px;">
                 @csrf
                 <div class="form-group pb-3">
                     <label for="check-code" class="pb-1">請先填寫保卡號碼</label>
@@ -35,6 +49,7 @@
                     </span>
                     <input type="text" class="form-control" id="check-code" name="check-code" placeholder="保卡號碼" required>
                     <a href="#" class="btn btn-primary" id="next" style="margin-top: 5px">下一步</a>
+                    <a href="#" class="btn btn-primary" id="pre" style="margin-top: 5px">上一步</a>
                 </div>
                 <div id="lockit" class="cantsee">
                     <div class="form-group pb-3">
@@ -82,47 +97,9 @@
 
                     <!-- pass json body start -->
                     <div id="product-group">
-                        <div class="input-group pb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">產品</span>
-                            </div>
-                            <select class="form-control" class="product" name="product-1" required>
-                                <option value="none">無</option>
-                                @foreach ($Data['Products'] as $Product)
-                                <option value="{{$Product->name}}">{{$Product->name}}</option>
-                                @endforeach
-                            </select>
-                
-                            <div class="input-group-append">
-                                <a class="btn btn-secondary plus-dp" style="width:40px">+</a>
-                            </div>
-                        </div>
 
-                        <div class="form-group pb-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox1">前擋</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後擋" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox2">後擋</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前側檔" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox1">前側檔</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後側檔" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox2">後側檔</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="左右側" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox2">左右側</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="天窗" name="construction-site-1">
-                                <label class="form-check-label" for="inlineCheckbox3">天窗</label>
-                            </div>
+                        <div id="product_response">
+
                         </div>
 
                         <div id="dp">
@@ -199,6 +176,51 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    //var warranty_type = 'SUN';
+    $("#warranty_code").hide();
+    $("#SUN").click(function(){
+        warranty_type = 'SUN';
+        $.ajax({
+            type: "GET",
+            url: '/get_response_product',
+            data: {
+                'type': warranty_type,
+            },
+            dataType: 'html',
+            success: function (response) {
+                $("#product_response").html(response);
+            }
+        });
+        $("#warranty_code").show('slow');
+        $("#warranty_type").hide('slow');
+        
+    });
+    $("#CPF").click(function(){
+        warranty_type = 'CPF';
+
+        $.ajax({
+            type: "GET",
+            url: '/get_response_product',
+            data: {
+                'type': warranty_type,
+            },
+            dataType: 'html',
+            success: function (response) {
+                $("#product_response").html(response);
+            }
+        });
+        $("#warranty_code").show('slow');
+        $("#warranty_type").hide('slow');
+    });
+    // $("#BUILDING").click(function(){
+    //     warranty_type = 'BUILDING';
+    // });
+
+    $("#pre").click(function(){
+        $("#warranty_code").hide('slow');
+        $("#warranty_type").show('slow');
+    })
+
     // 檢查碼填寫後檢查
     $("#next").on('click', function(){
         $.ajax({
@@ -224,25 +246,27 @@
     });
 
     // 動態增加商品輸入欄位
-    var i = 2;
-    $('.plus-dp').click(function(){
-        $.ajax({
-            type: "GET",
-            url: '/product',
-            data: {
-                'num': i
-            },
-            dataType: 'html',
-            success: function (response) {
-                $('#dp').append(response);
-                i++;
-            },
-        });
-    });
+    // var i = 2;
+    // $('.plus-dp').click(function(){
+    //     console.log(warranty_type);
+    //     $.ajax({
+    //         type: "GET",
+    //         url: '/product',
+    //         data: {
+    //             'num': i,
+    //             'type': warranty_type
+    //         },
+    //         dataType: 'html',
+    //         success: function (response) {
+    //             $('#dp').append(response);
+    //             i++;
+    //         },
+    //     });
+    // });
 
-    $('.minus-dp').click(function(){
-        $(this).parent().remove();
-    });
+    // $('.minus-dp').click(function(){
+    //     $(this).parent().remove();
+    // });
 
     $('#pass').click(function(){
 
@@ -271,53 +295,6 @@
         {
             passData();
         }
-        
-        
-        // if(fill_all == true){
-        //     var product_group = $('#product-group :input').serializeArray();
-        //     console.log(product_group);
-        //     $.ajax({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         },
-        //         type: "POST",
-        //         url: '/postwarranty',
-        //         data: {
-        //             'check_code': $('#check-code').val(),
-        //             'user_name': $('#user-name').val(),
-        //             'user_mobile': $('#user-mobile').val(),
-        //             'user_email': $('#user-email').val(),
-        //             'user_address': $('#user-address').val(),
-        //             'user_carlicense': $('#user-carlicense').val(),
-        //             'user_carbrand': $('#user-carbrand').val(),
-        //             'user_carname': $('#user-carname').val(),
-        //             'warranty_type': $('#warranty-type').val(),
-        //             'store': $('#store').val(),
-        //             'construction_date': $('#construction_date').val(),
-        //             'price': $('#price').val(),
-        //             'recommand': $('#recommand').val(),
-        //             'product_group': product_group,
-        //         },
-        //         dataType: 'html',
-        //         success: function (response) {
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 confirmButtonColor: '#6c757d',
-        //                 title: '保證卡註冊成功',
-        //                 showClass: {
-        //                     popup: 'animate__animated animate__fadeInDown'
-        //                 },
-        //                 hideClass: {
-        //                     popup: 'animate__animated animate__fadeOutUp'
-        //                 }
-        //             }).then((result) =>{
-        //                 window.location.reload();
-        //             });
-                    
-        //         },
-        //     });
-        // }
-
     });
 
     function passData()

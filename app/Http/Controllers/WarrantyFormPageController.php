@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CardTemplate\CarTemplate;
+use App\CardTemplate\CarTemplateCPF;
 use App\CheckWarranty;
 use App\WarrantyCard;
 use App\Product;
@@ -18,8 +19,6 @@ class WarrantyFormPageController extends Controller
 {
     public function __construct(Request $req)
     {
-        //$this->middleware('auth');
-
         try {
             $url = \Request::getRequestUri();
             $url_arr = explode('/', $url);
@@ -53,6 +52,116 @@ class WarrantyFormPageController extends Controller
         return view('welcome')->with('Data', $data);
     }
 
+    public function reponseProduct(Request $req)
+    {
+        //return $req->type;
+        $Products = Product::where('category', 'SUN')->get();
+        $carside = "";
+        if($req->type == 'SUN')
+        {
+            $Products = Product::where('category', 'SUN')->get();
+            $carside .= '
+            <div class="form-group pb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox1">前擋</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox2">後擋</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="前側檔" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox3">前側檔</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="後側檔" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox4">後側檔</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="左右側" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox5">左右側</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="天窗" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox6">天窗</label>
+                </div>
+            </div>
+            ';
+        }
+        if($req->type == 'CPF')
+        {
+            $Products = Product::where('category', 'CPF')->get();
+            $carside .= '
+            <div class="form-group pb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox1">全車</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox2">玻璃</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="前擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox3">車身</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="後擋" name="construction-site-1">
+                    <label class="form-check-label" for="inlineCheckbox4">輪胎</label>
+                </div>
+            </div>
+            ';
+        }
+
+        $presult = "";
+        foreach($Products as $Product)
+        {
+            $presult .=  '<option value="'.$Product->name.'">'.$Product->name.'</option>';
+        }
+
+        return $output = '
+            <div class="input-group pb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">產品</span>
+                </div>
+                <select class="form-control" class="product" name="product-1" required>
+                    <option value="none">無</option>
+                    XXX
+                    '.$presult.'
+                </select>
+
+                <div class="input-group-append">
+                    <a class="btn btn-secondary plus-dp" style="width:40px">+</a>
+                </div>
+            </div>
+            '.$carside.'
+            <script>
+            var i = 2;
+            $(".plus-dp").click(function(){
+                console.log(warranty_type);
+                $.ajax({
+                    type: "GET",
+                    url: "/product",
+                    data: {
+                        "num": i,
+                        "type": warranty_type
+                    },
+                    dataType: "html",
+                    success: function (response) {
+                        $("#dp").append(response);
+                        i++;
+                    },
+                });
+            });
+        
+            $(".minus-dp").click(function(){
+                $(this).parent().remove();
+            });
+            </script>
+        ';
+    }
+
     public function warrantytable()
     {
         $mycard = WarrantyCard::where('user_uniqid', Auth::user()->uniqid)->get();
@@ -62,7 +171,18 @@ class WarrantyFormPageController extends Controller
     public function getProductHTM(Request $req)
     {
         $num = $req->num;
+        $type = $req->type;
         $basicHTM = new CarTemplate;
+
+        if($type == 'CPF')
+        {
+            $basicHTM = new CarTemplateCPF;
+        }
+        if($type == 'SUN')
+        {
+            $basicHTM = new CarTemplate;
+        }
+
         return $basicHTM->renderCarHTM($num);
     }
 
@@ -100,7 +220,6 @@ class WarrantyFormPageController extends Controller
             {
                 $card->warranty_body .= $items['value'].',';
             }
-
         }
 
         $card->recommand_user_id = $req->input('recommand');
@@ -152,10 +271,6 @@ class WarrantyFormPageController extends Controller
 
         $data = WarrantyCard::where('card_id', $card_id)->first();
         $pdf = PDF::loadView('warrantypdf', array('CARD' => $data));
-        //$pdf->stream('gama.pdf');
         return $pdf->download('gama.pdf'); 
-
-        // $warrantyCard = WarrantyCard::where('card_id', $card_id)->first();
-        // return view('warrantypdf')->with('CARD', $warrantyCard);
     }
 }

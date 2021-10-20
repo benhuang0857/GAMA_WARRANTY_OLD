@@ -7,7 +7,7 @@ class CarTemplate
 {
     public function renderCarHTM($num)
     {
-        $Products = Product::all();
+        $Products = Product::where('category', 'SUN')->get();
 
         $output = '
         <div class="php">
@@ -41,16 +41,16 @@ class CarTemplate
                     <label class="form-check-label" for="inlineCheckbox2">後擋</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="前側檔" name="construction-site-'.$num.'">
-                    <label class="form-check-label" for="inlineCheckbox1">前側檔</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="前側檔" name="construction-site-'.$num.'">
+                    <label class="form-check-label" for="inlineCheckbox3">前側檔</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="後側檔" name="construction-site-'.$num.'">
-                    <label class="form-check-label" for="inlineCheckbox2">後側檔</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="後側檔" name="construction-site-'.$num.'">
+                    <label class="form-check-label" for="inlineCheckbox4">後側檔</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="左右側" name="construction-site-'.$num.'">
-                    <label class="form-check-label" for="inlineCheckbox2">左右側</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="左右側" name="construction-site-'.$num.'">
+                    <label class="form-check-label" for="inlineCheckbox5">左右側</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="天窗" name="construction-site-'.$num.'">
