@@ -33,6 +33,7 @@ class WarrantyCardController extends AdminController
             $filter->like('check_code', '保卡編號');
             $filter->like('name', '用戶名');
             $filter->like('mobile', '手機號');
+            $filter->like('car_license', '車牌');
             $filter->equal('status', '狀態')->select(['ON' => '啟用', 'OFF' => '未啟用']);
         });
 
