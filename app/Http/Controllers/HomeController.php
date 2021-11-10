@@ -50,18 +50,20 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        $user->name    = $req->input('name');
-        $user->email   = $req->input('email');
-        $user->mobile  = $req->input('mobile');
-        $user->address = $req->input('address');
+        try {
+            $user->name    = $req->input('name');
+            $user->email   = $req->input('email');
+            $user->mobile  = $req->input('mobile');
+            $user->address = $req->input('address');
 
-        if( $req->input('password') != null )
-        {
-            $user->password = bcrypt($req->input('password'));
-        }
-
-        $user->save();
-
-        return redirect()->back();
+            if( $req->input('password') != null )
+            {
+                $user->password = bcrypt($req->input('password'));
+            }
+            $user->save();
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back();
+        }        
     }
 }
