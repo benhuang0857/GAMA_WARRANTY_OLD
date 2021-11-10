@@ -62,6 +62,7 @@ class HomeController extends Controller
                 $user->password = bcrypt($req->input('password'));
             }
             $user->save();
+            Session::flash('message', "更新資料成功!");
             return redirect('home');
         } catch (\Throwable $th) {
             Session::flash('message', "錯誤，您使用的手機已經被註冊，請聯絡官方人員協助!");
