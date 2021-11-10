@@ -61,9 +61,9 @@ class HomeController extends Controller
                 $user->password = bcrypt($req->input('password'));
             }
             $user->save();
-            return redirect()->back();
+            return redirect('home');
         } catch (\Throwable $th) {
-            return redirect()->back()->withErrors(['錯誤訊息：' => $th]);
+            return redirect('home')->with('error' , $th);
         }        
     }
 }

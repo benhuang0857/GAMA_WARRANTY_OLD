@@ -12,6 +12,11 @@
 </style>
 
 <div class="container">
+
+    @if($error->any())
+    <h4>{{$error}}</h4>
+    @endif
+
     <div class="row justify-content-center shadow_box_2" style="margin-bottom:30px ">
         <div class="col-lg">
             <div class="white-box analytics-info">
