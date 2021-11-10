@@ -13,8 +13,8 @@
 
 <div class="container">
 
-    @if($error->any())
-    <h4>{{$error}}</h4>
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
 
     <div class="row justify-content-center shadow_box_2" style="margin-bottom:30px ">

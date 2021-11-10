@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -63,7 +64,8 @@ class HomeController extends Controller
             $user->save();
             return redirect('home');
         } catch (\Throwable $th) {
-            return redirect('home')->with('error' , $th);
+            Session::flash('message', "錯誤，您使用的手機已經被註冊，請聯絡官方人員協助!");
+            return redirect('home');
         }        
     }
 }
