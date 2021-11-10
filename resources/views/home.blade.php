@@ -12,10 +12,6 @@
 </style>
 
 <div class="container">
-
-    @if($errors->any())
-    <h4>{{$errors->first()}}</h4>
-    @endif
     <div class="row justify-content-center shadow_box_2" style="margin-bottom:30px ">
         <div class="col-lg">
             <div class="white-box analytics-info">
