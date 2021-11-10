@@ -21,4 +21,5 @@ Route::group([
     $router->resource('for_check_warranties', CheckWarrantyController::class);
     $router->resource('point_products', PointProductController::class);
     $router->resource('gama_stores', GAMAStoreController::class);
+    $router->resource('series', SeriesController::class);
 });

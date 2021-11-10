@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use App\Series;
 
 class ProductCardController extends AdminController
 {
@@ -76,13 +77,27 @@ class ProductCardController extends AdminController
      * @return Form
      */
     protected function form()
-    {
+    {   
+        $Series = Series::all();
+
+        $seriesArr = array();
+        foreach($Series as $ser)
+        {
+            $seriesArr[$ser->id] = $ser->name;
+        }
+
+        $seriesArr = array();
+        foreach($Series as $ser)
+        {
+            $seriesArr[$ser->id] = $ser->name;
+        }
+
         $form = new Form(new Product());
 
         $form->text('name', '料號');
         $form->text('sku', __('Sku'));
         $form->text('category', '產品分類');
-        $form->text('series', '系列');
+        $form->select('series', '系列')->options($seriesArr);
         $form->number('gama_point', '反點');
         $form->number('warranty_time', '保固時間');
         $form->select('status', '狀態')->options([
