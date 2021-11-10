@@ -63,7 +63,7 @@ class HomeController extends Controller
             $user->save();
             return redirect()->back();
         } catch (\Throwable $th) {
-            return redirect()->back();
+            return redirect()->back()->withErrors(['錯誤訊息：' => $th]);
         }        
     }
 }
