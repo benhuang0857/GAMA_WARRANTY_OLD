@@ -141,7 +141,7 @@ class WarrantyCardController extends AdminController
 
             if($form->model()->recommand_user_id != 'no')
             {
-                $gamaPointLog = GamaPointLog::where('userid_used', $form->model()->user_uniqid)->first();
+                $gamaPointLog = GamaPointLog::where('userid_used', $form->model()->user_uniqid)->where('status', 'OFF')->first();
 
                 //dd($gamaPointLog);
     
@@ -162,6 +162,7 @@ class WarrantyCardController extends AdminController
                     }
                 } catch (\Throwable $th) {
                     //throw $th;
+                    dd($th);
                 }
                 
             }

@@ -8,6 +8,7 @@ use App\CardTemplate\CarTemplateCPF;
 use App\CheckWarranty;
 use App\WarrantyCard;
 use App\Product;
+use App\Series;
 use App\Brand;
 use App\GamaPointLog;
 use App\User;
@@ -232,12 +233,36 @@ class WarrantyFormPageController extends Controller
 
             if($card->recommand_user_id != 'no')
             {
+
+                $product_body = explode('/n', $card->warranty_body);
+                $products = array();
+                foreach($product_body as $body)
+                {
+                    array_push($products, explode(':', $body)[0]);
+                }
+
+                #Find series and max point
+                $maxPoints = 0;
+                foreach($products as $product)
+                {
+                    $target_series_id = Product::where('name', $product)->first()->series;
+                    $series = Series::where('id', $target_series_id)->first();
+                    if($series != null)
+                    {
+                        if($series->gama_point > $maxPoints)
+                        {
+                            $maxPoints = $series->gama_point;
+                        }
+                    }
+                }
+                //dd($maxPoints);
+
                 $GamaPointLog = new GamaPointLog;
                 $GamaPointLog->userid_share = $card->recommand_user_id;
                 $GamaPointLog->share_name = User::where('uniqid', $card->recommand_user_id)->first()->name;
                 $GamaPointLog->userid_used = Auth::user()->uniqid;
                 $GamaPointLog->used_name = Auth::user()->name;
-                $GamaPointLog->point = 500;
+                $GamaPointLog->point = $maxPoints;
                 $GamaPointLog->status = 'OFF';
                 $GamaPointLog->used = 'NO';
                 $GamaPointLog->note = '會員'.$GamaPointLog->used_name.'使用了會員'.$GamaPointLog->share_name.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
