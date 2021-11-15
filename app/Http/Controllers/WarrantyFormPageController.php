@@ -233,6 +233,7 @@ class WarrantyFormPageController extends Controller
 
             if($card->recommand_user_id != 'no')
             {
+
                 $product_body = explode('/n', $card->warranty_body);
                 $products = array();
                 foreach($product_body as $body)
@@ -242,18 +243,18 @@ class WarrantyFormPageController extends Controller
 
                 #Find series and max point
                 $maxPoints = 0;
-                // foreach($products as $product)
-                // {
-                //     $target_series_id = Product::where('name', $product)->first()->series;
-                //     $series = Series::where('id', $target_series_id)->first();
-                //     if($series != null)
-                //     {
-                //         if($series->gama_point > $maxPoints)
-                //         {
-                //             $maxPoints = $series->gama_point;
-                //         }
-                //     }
-                // }
+                foreach($products as $product)
+                {
+                    $target_series_id = Product::where('name', $product)->first()->series;
+                    $series = Series::where('id', $target_series_id)->first();
+                    if($series != null)
+                    {
+                        if($series->gama_point > $maxPoints)
+                        {
+                            $maxPoints = $series->gama_point;
+                        }
+                    }
+                }
                 //dd($maxPoints);
 
                 $GamaPointLog = new GamaPointLog;
