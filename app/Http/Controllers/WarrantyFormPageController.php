@@ -231,7 +231,7 @@ class WarrantyFormPageController extends Controller
             $checkWarranty->used = 'YES';
             $checkWarranty->save();
 
-            if($card->recommand_user_id == 'no')
+            if($card->recommand_user_id != 'no')
             {
                 $product_body = explode('/n', $card->warranty_body);
                 $products = array();
