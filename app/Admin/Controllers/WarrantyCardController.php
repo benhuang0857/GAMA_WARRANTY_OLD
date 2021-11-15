@@ -143,30 +143,29 @@ class WarrantyCardController extends AdminController
             {
                 $gamaPointLog = GamaPointLog::where('userid_used', $form->model()->user_uniqid)->where('status', 'OFF')->first();
 
-                //dd($gamaPointLog);
-    
-                try {
-                    if($gamaPointLog->status == 'OFF' && $gamaPointLog->used == 'NO')
-                    {
-                        $user_share = User::where('uniqid', $gamaPointLog->userid_share)->first();
-                        $user_share->gama_point += $gamaPointLog->point;
-                        $user_share->save();
-        
-                        $user_used = User::where('uniqid', $gamaPointLog->userid_used)->first();
-                        $user_used->gama_point += $gamaPointLog->point;
-                        $user_used->save();
-        
-                        $gamaPointLog->status = 'ON';
-                        $gamaPointLog->used = 'YES';
-                        $gamaPointLog->save();
-                    }
-                } catch (\Throwable $th) {
-                    //throw $th;
-                    dd($th);
-                }
-                
-            }
+                if( $gamaPointLog != null )
+                {
+                    try {
+                        if($gamaPointLog->status == 'OFF' && $gamaPointLog->used == 'NO')
+                        {
+                            $user_share = User::where('uniqid', $gamaPointLog->userid_share)->first();
+                            $user_share->gama_point += $gamaPointLog->point;
+                            $user_share->save();
             
+                            $user_used = User::where('uniqid', $gamaPointLog->userid_used)->first();
+                            $user_used->gama_point += $gamaPointLog->point;
+                            $user_used->save();
+            
+                            $gamaPointLog->status = 'ON';
+                            $gamaPointLog->used = 'YES';
+                            $gamaPointLog->save();
+                        }
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                        dd($th);
+                    }
+                }       
+            }
         });
 
         return $form;

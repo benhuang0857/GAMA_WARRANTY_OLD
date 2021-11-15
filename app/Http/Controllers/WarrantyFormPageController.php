@@ -257,22 +257,23 @@ class WarrantyFormPageController extends Controller
                             }
                         }
                     }
+
+                    $GamaPointLog = new GamaPointLog;
+                    $GamaPointLog->userid_share = $card->recommand_user_id;
+                    $GamaPointLog->share_name = User::where('uniqid', $card->recommand_user_id)->first()->name;
+                    $GamaPointLog->userid_used = Auth::user()->uniqid;
+                    $GamaPointLog->used_name = Auth::user()->name;
+                    $GamaPointLog->point = $maxPoints;
+                    $GamaPointLog->status = 'OFF';
+                    $GamaPointLog->used = 'NO';
+                    $GamaPointLog->note = '會員'.$GamaPointLog->used_name.'使用了會員'.$GamaPointLog->share_name.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
+                    $GamaPointLog->save();
+
                 } catch (\Throwable $th) {
                     //throw $th;
                 }
 
-                //dd($maxPoints);
-
-                $GamaPointLog = new GamaPointLog;
-                $GamaPointLog->userid_share = $card->recommand_user_id;
-                $GamaPointLog->share_name = User::where('uniqid', $card->recommand_user_id)->first()->name;
-                $GamaPointLog->userid_used = Auth::user()->uniqid;
-                $GamaPointLog->used_name = Auth::user()->name;
-                $GamaPointLog->point = $maxPoints;
-                $GamaPointLog->status = 'OFF';
-                $GamaPointLog->used = 'NO';
-                $GamaPointLog->note = '會員'.$GamaPointLog->used_name.'使用了會員'.$GamaPointLog->share_name.'的推薦連結，贈送兩位會員點數：'.$GamaPointLog->point;
-                $GamaPointLog->save();                
+                //dd($maxPoints);                
             }
             return 'success';
         }
