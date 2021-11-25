@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$Product->name}}</h5>
                     <p class="card-text">價格：{{$Product->price}} GAMA點數</p>
-                    {{!$Product->description!}}
+                    {!!$Product->description!!}
                     <a href="/register" class="btn btn-primary" style="color:white">
                         成為Gama會員
                     </a>
