@@ -25,6 +25,7 @@ Route::get('/get_response_product', 'WarrantyFormPageController@reponseProduct')
 
 Route::get('/point_products', 'ProductController@index')->middleware('auth');
 Route::get('/point_products_show', 'ProductController@indexNologin');
+Route::get('/point_products_show/{id}', 'ProductController@getProductNologin');
 Route::post('/transpoint', 'ProductController@transpoint')->middleware('auth');
 
 Route::get('/product', 'WarrantyFormPageController@getProductHTM')->middleware('auth');

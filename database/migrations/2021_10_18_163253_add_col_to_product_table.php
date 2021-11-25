@@ -17,6 +17,7 @@ class AddColToProductTable extends Migration
             $table->string('category')->default('SUN');
             $table->string('series')->default('NO');
             $table->integer('gama_point')->default(0);
+            $table->integer('warranty_time')->default(5);
         });
     }
 
@@ -31,6 +32,7 @@ class AddColToProductTable extends Migration
             $table->dropColumn('category');
             $table->dropColumn('series');
             $table->dropColumn('gama_point');
+            $table->dropColumn('warranty_time');
         });
     }
 }

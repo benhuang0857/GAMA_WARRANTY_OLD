@@ -11,35 +11,17 @@
                 </h2>
             </div>
 
-            @foreach ($Products as $product)
-            <div class="card float-left" style="width: 18rem; height:400px; margin:10px">
-                <a href="/point_products_show/{{$product->id}}">
-                    <img class="card-img-top" height="150px" src="{{asset('/upload/'.$product->image)}}" alt="Card image cap">
-                </a>
+            <div class="card" style="margin:10px">
+                <img class="card-img-top" height="300px" src="{{asset('/upload/'.$Product->image)}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{$product->name}}</h5>
-                    <p class="card-text">價格：{{$product->price}} GAMA點數</p>
+                    <h5 class="card-title">{{$Product->name}}</h5>
+                    <p class="card-text">價格：{{$Product->price}} GAMA點數</p>
+                    <p>{{$Product->description}}</p>
                     <a href="/register" class="btn btn-primary" style="color:white">
                         成為Gama會員
                     </a>
                 </div>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{$product->name}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            @endforeach
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColToProductTable extends Migration
+class AddDescriptionPointproductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColToProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->integer('warranty_time')->default(5);
+        Schema::table('pointproduct', function (Blueprint $table) {
+            $table->text('description')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddColToProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->dropColumn('warranty_time');
+        Schema::table('pointproduct', function (Blueprint $table) {
+            $table->dropColumn('description');
         });
     }
 }

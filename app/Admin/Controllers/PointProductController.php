@@ -68,6 +68,7 @@ class PointProductController extends AdminController
         $form->text('name', __('Name'));
         $form->image('image', __('Image'));
         $form->number('price', __('Price'));
+        $form->textarea('description', __('Description'))->rows(10);
 
         return $form;
     }
