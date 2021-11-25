@@ -12,7 +12,7 @@
             </div>
 
             <div class="card" style="margin:10px">
-                <img class="card-img-top" height="500px" src="{{asset('/upload/'.$Product->image)}}" alt="Card image cap">
+                <img class="card-img-top" height="40%" src="{{asset('/upload/'.$Product->image)}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$Product->name}}</h5>
                     <p class="card-text">價格：{{$Product->price}} GAMA點數</p>
