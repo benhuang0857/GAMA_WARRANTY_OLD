@@ -118,8 +118,8 @@
                     When you choose GAMA products, you also enjoy the most noble courtesy. Thank you for choosing GAMA. We believe that you will have a new definition of the pursuit of comfort and lifestyle. Quality assurance is our self-expectation. Regarding the quality of GAMA insulation film, please be sure to follow, "The secret to care and maintenance of GAMA insulation film." This product is not a timeless product. If used in construction, the performance will be affected due to the same conditions of use. For the warranty period, please refer to the recommendations provided by Taiwan GAMA Co., Ltd. Welcome to join the Friends of GAMA to get free construction coupons, discount coupons and new product trial opportunities.
                 </p>
             </div>
-            <button style="width:100%; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製分享連結</button>
-            <button style="width:100%; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">Share Link</button>
+            <button style="width:100%; font-size: 23px; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">複製分享連結</button>
+            <button style="width:100%; font-size: 23px; margin-bottom:20px" class="btn btn-outline-secondary" type="button" onclick="myFunction()">Share Link</button>
             <!--<button style="width:100%" class="btn btn-outline-secondary" type="button">我的推薦人</button>-->
         </div>
     </div>
