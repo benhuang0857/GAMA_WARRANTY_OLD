@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
         content="GAMA,g,a,m,a,TSLA,特斯拉,Tesla Model 3,Tesla Model S,Tesla Model X,隔熱紙,汽車隔熱紙,大樓隔熱紙,防爆安全隔熱,建築膜,建築隔熱紙,隔熱,紅外線,紫外線,特斯拉隔熱紙,防曬,美白,GAMA翠光,GAMA超強防晒膜,地表上最強的隔熱紙,高檔隔熱紙,抗熱隔熱膜,好的隔熱紙,旗艦級隔熱紙,頂級隔熱紙,無毒隔熱紙,無毒隔熱膜,翠光防爆膜,翠光隔熱紙,GAMA,GAMA防爆膜,GAMA隔熱紙,汽車前檔隔熱紙,天窗隔熱紙,隔熱紙推薦,隔熱率高,透視力高,視線清晰,無毒認證,不影響tag,隔紅外線,隔紫外線,護眼,陽光造成傷害,保護皮膚,保護眼睛,保護汽車內裝,車內無毒環境,旅遊推薦,露營,省油,新車首選,新車必備,推薦,買車,出遊,防護,肌膚老化,保固最長,隔熱紙評比,隔熱紙價格,臺北隔熱紙,臺中隔熱紙,高雄隔熱紙,南港隔熱紙,汐止隔熱紙,汐止汽車玻璃,經銷商,隔熱紙總代理">
-    <meta name="robots" content="noindex,nofollow">
     <title>GAMA 保卡系統</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
