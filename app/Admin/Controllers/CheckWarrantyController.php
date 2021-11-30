@@ -27,6 +27,11 @@ class CheckWarrantyController extends AdminController
     {
         $grid = new Grid(new checkwarranty());
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->like('check_code', '檢查碼');
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('check_code', __('Check code'));
         $grid->column('used', __('Used'));
