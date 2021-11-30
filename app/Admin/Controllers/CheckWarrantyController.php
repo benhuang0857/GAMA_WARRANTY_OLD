@@ -30,6 +30,7 @@ class CheckWarrantyController extends AdminController
         $grid->filter(function($filter){
             $filter->disableIdFilter();
             $filter->like('check_code', '檢查碼');
+            $filter->equal('status', '狀態')->select(['YES' => '已使用', 'NO' => '未使用']);
         });
 
         $grid->column('id', __('Id'));
