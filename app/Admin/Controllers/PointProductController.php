@@ -28,7 +28,9 @@ class PointProductController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('image', __('Image'));
+        $grid->column('image', __('Image'))->display(function(){
+            return "<img src=https://".$_SERVER['SERVER_NAME'].':8000/upload/'.$this->image.">";
+        });
         $grid->column('price', __('Price'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
