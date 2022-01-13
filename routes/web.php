@@ -31,3 +31,6 @@ Route::post('/transpoint', 'ProductController@transpoint')->middleware('auth');
 Route::get('/product', 'WarrantyFormPageController@getProductHTM')->middleware('auth');
 Route::get('/check_code', 'WarrantyFormPageController@checkcode')->middleware('auth');
 Route::post('/postwarranty', 'WarrantyFormPageController@postWarranty')->middleware('auth');
+
+Route::get('/line', 'LoginController@pageLine');
+Route::get('/callback/login', 'LoginController@lineLoginCallBack');
