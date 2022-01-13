@@ -12,8 +12,8 @@ class LineService
         $url = config('line.authorize_base_url') . '?';
         $url .= 'response_type=code';
         //$url .= '&client_id=' . config('line.channel_id');
-        $url .= '&client_id='.env('LINE_CHANNEL_ID');
-        $url .= '&redirect_uri='.env('APP_URL').'/callback/login';
+        $url .= '&client_id=1656801322';
+        $url .= '&redirect_uri=https://gama-tw.com/callback/login';
         $url .= '&state=test'; // 暫時固定方便測試
         $url .= '&scope=openid%20profile';
 
@@ -27,9 +27,9 @@ class LineService
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'code' => $code,
-                'redirect_uri' => env('APP_URL').'/callback/login',
-                'client_id' => env('LINE_CHANNEL_ID'),
-                'client_secret' => env('LINE_SECRET')
+                'redirect_uri' => 'https://gama-tw.com/callback/login',
+                'client_id' => '1656801322',
+                'client_secret' => 'b39e5b6e8e7f88582c41c8d1034717a4'
             ]
         ]);
         return json_decode($response->getBody()->getContents(), true);
