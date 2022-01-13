@@ -22,9 +22,6 @@ class LineService
     public function getLineToken($code)
     {
         $client = new Client();
-
-        dd(config('app.url'));
-
         $response = $client->request('POST', config('line.get_token_url'), [
             'form_params' => [
                 'grant_type' => 'authorization_code',

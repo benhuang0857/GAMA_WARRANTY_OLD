@@ -19,6 +19,7 @@ class LoginController extends Controller
     public function pageLine()
     {
         $url = $this->lineService->getLoginBaseUrl();
+        dd(config('app.url'));
         return view('line')->with('url', $url);
     }
 
