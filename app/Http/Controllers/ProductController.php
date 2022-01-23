@@ -51,7 +51,5 @@ class ProductController extends Controller
         {
             return 'error';
         }
-
-        
     } 
 }

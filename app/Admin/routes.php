@@ -22,4 +22,9 @@ Route::group([
     $router->resource('point_products', PointProductController::class);
     $router->resource('gama_stores', GAMAStoreController::class);
     $router->resource('series', SeriesController::class);
+
+    $router->resource('tickets', TicketController::class);
+    $router->resource('orders', OrderController::class);
+    $router->resource('sheet-codes', SheetCodeController::class);
+
 });
