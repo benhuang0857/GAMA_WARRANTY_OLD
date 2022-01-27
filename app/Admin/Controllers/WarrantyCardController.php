@@ -113,7 +113,7 @@ class WarrantyCardController extends AdminController
         $form->text('card_id', '保卡編號');
         $form->text('name', '用戶名');
         //$form->mobile('mobile', '手機')->options(['mask' => '9999999999']);
-        $form->mobile('mobile', '手機');
+        $form->text('mobile', '電話(可填國碼)');
         $form->text('address', '地址');
         $form->email('email', __('Email'));
         $form->text('car_license', '車牌');
