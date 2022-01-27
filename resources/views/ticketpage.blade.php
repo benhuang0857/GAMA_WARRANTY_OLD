@@ -34,9 +34,12 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/transpoint">
+                    
+                        <form method="POST" action="/buy-ticket">
                             @csrf
                             <input style="display: none"  type="text" class="form-control" id="user-uniqid" name="user-uniqid" value="{{Auth()->user()->uniqid}}">
+                            <input style="display: none"  type="text" class="form-control" id="product-id" name="product-id" value="{{$product->id}}">
+                            <input style="display: none"  type="text" class="form-control" id="code-type" name="code-type" value="{{$product->code_type}}">
                             <div class="form-group pb-3">
                                 <label for="product-name" class="pb-1">商品卷名稱</label>
                                 <input type="text" class="form-control" id="product-name" name="product-name" value="{{$product->name}}" readonly>
@@ -75,7 +78,7 @@
 
         for(var i=0; i<passfrom.length; i++)
         {
-            console.log(passfrom.eq(i).val());
+            //console.log(passfrom.eq(i).val());
             if ( passfrom.eq(i).val() == '' ) {
                 Swal.fire({
                     icon: 'error',
@@ -98,26 +101,44 @@
 
         if(fill_all == true){
             var product_group = $(this).closest("form").find('input[type="text"]').serializeArray();
-            console.log(product_group);
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: "POST",
-                url: '/transpoint',
+                url: '/buy-ticket',
                 data: {
                     'user_uniqid': $(this).closest("form").find('#user-uniqid').val(),
+                    'product_id': $(this).closest("form").find('#product-id').val(),
+                    'code_type': $(this).closest("form").find('#code-type').val(),
                     'product_name': $(this).closest("form").find('#product-name').val(),
                     'price': $(this).closest("form").find('#price').val()
                 },
                 dataType: 'html',
                 success: function (response) {
+                    console.log(response);
                     if(response == 'error')
                     {
                         Swal.fire({
                             icon: 'error',
                             confirmButtonColor: '#6c757d',
                             title: '失敗',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        }).then((result) =>{
+                            window.location.reload();
+                        });
+                    }
+                    if(response == 'Out Of Stock')
+                    {
+                        Swal.fire({
+                            icon: 'error',
+                            confirmButtonColor: '#6c757d',
+                            title: '庫存不足',
                             showClass: {
                                 popup: 'animate__animated animate__fadeInDown'
                             },

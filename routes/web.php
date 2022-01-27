@@ -35,4 +35,5 @@ Route::post('/postwarranty', 'WarrantyFormPageController@postWarranty')->middlew
 Route::get('/line', 'LoginController@pageLine');
 Route::get('/callback/login', 'LoginController@lineLoginCallBack');
 
-Route::get('/tickets', 'TicketController@index');
+Route::get('/tickets', 'TicketController@index')->middleware('auth');
+Route::post('/buy-ticket', 'TicketController@buyTicket')->middleware('auth');
