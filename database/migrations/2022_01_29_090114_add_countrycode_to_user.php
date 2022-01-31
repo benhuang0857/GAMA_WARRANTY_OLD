@@ -14,7 +14,7 @@ class AddCountrycodeToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('country_code')->default('+886');
+            $table->string('country_code')->default('+886');
         });
     }
 
