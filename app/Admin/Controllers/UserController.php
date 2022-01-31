@@ -105,7 +105,6 @@ class UserController extends AdminController
             '+852' => '香港',
             '+86' => '中國',
         ]);
-        $form->text('country_code', '國碼');
         $form->text('mobile', '電話');
         $form->password('password', '密碼');
         $form->select('status', '保卡狀態')->options([
