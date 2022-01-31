@@ -38,6 +38,7 @@ class UserController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('name', '姓名');
         $grid->column('email', __('Email'));
+        $grid->column('country_code', '國碼');
         $grid->column('mobile', '手機');
         //$grid->column('password', __('Password'));
         //$grid->column('address', '住家地址');
@@ -77,6 +78,7 @@ class UserController extends AdminController
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
         $show->field('address', __('Address'));
+        $grid->field('country_code', 'country code');
         $show->field('mobile', __('Mobile'));
         $show->field('avatar', __('Avatar'));
         $show->field('gama_point', __('Gama point'));
@@ -97,7 +99,14 @@ class UserController extends AdminController
         $form->text('uniqid', '系統自動產生ID')->value(uniqid())->readonly();
         $form->email('email', __('Email'));
         //$form->mobile('mobile', '電話')->options(['mask' => '9999999999']);
-        $form->text('mobile', '電話(可填國碼)');
+        $form->select('country_code', '國碼')->options([
+            '+886' => '台灣',
+            '+1' => '美國',
+            '+852' => '香港',
+            '+86' => '中國',
+        ]);
+        $form->text('country_code', '國碼');
+        $form->text('mobile', '電話');
         $form->password('password', '密碼');
         $form->select('status', '保卡狀態')->options([
             'OFF' => '未啟用',
