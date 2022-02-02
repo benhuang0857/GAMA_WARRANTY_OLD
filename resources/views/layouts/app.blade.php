@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="在您選擇GAMA翠光產品的同時，您也享有最尊貴的禮遇。感謝您選擇GAMA翠光產品，我們相信對於舒適以及生活品味的追求，您一定會有全新的定義。品質保證是我們的自我期許，關於GAMA隔熱膜的品質，請您務必遵守，「照顧並且保養GAMA隔熱膜的秘訣」。此產品非屬永恆性產品，若用於建築上會因使用條件同而影響效能，保固期限請參考臺灣柯美股份有限公司所提供之建議。歡迎加入GAMA之友即可有機會獲的免費的施工卷、折價卷及新品試用的機會。">
     <title>GAMA商城</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!--  <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" /> -->
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('ample/plugins/images/favicon.png')}}">
     <!-- Custom CSS -->
@@ -155,6 +155,18 @@
                                     <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/point_products" aria-expanded="false">
                                         <i class="fas fa-gift" aria-hidden="true"></i>
                                         <span class="hide-menu">申請兌換禮品</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/tickets" aria-expanded="false">
+                                        <i class="fa fa-microchip" aria-hidden="true"></i>
+                                        <span class="hide-menu">兌換票卷</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="/orders" aria-expanded="false">
+                                        <i class="fa fa-barcode" aria-hidden="true"></i>
+                                        <span class="hide-menu">兌換票卷紀錄</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">

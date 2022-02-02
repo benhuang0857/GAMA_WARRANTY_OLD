@@ -44,6 +44,7 @@ class UserController extends AdminController
         //$grid->column('address', '住家地址');
         //$grid->column('avatar', '頭像');
         $grid->column('gama_point', 'Gama點數');
+        $grid->column('role', '角色');
         $grid->column('status', '會員狀態')->display(function ($status) {
             if($status == 'ON')
             {
@@ -107,7 +108,11 @@ class UserController extends AdminController
         ]);
         $form->text('mobile', '電話');
         $form->password('password', '密碼');
-        $form->select('status', '保卡狀態')->options([
+        $form->select('role', '角色')->options([
+            'customer' => '一般會員',
+            'kol' => '網紅',
+        ]);
+        $form->select('status', '會員狀態')->options([
             'OFF' => '未啟用',
             'ON' => '啟用',
         ]);
