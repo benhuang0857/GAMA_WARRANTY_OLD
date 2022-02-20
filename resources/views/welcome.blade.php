@@ -43,7 +43,7 @@
 
                 <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%;">汽車膜</a>
                 <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%;" disabled="disabled">建築物(製作中)</a>
-                <a href="#" class="btn btn-primary" id="reload" style="margin-top: 5px">上一步</a>
+                <BR><a href="#" class="btn btn-primary" id="reload" style="margin-top: 5px">上一步</a>
             </div>
 
             <form method="POST" action="/postwarranty" id="warranty_code" class="shadow_box" style="padding: 10px;">
