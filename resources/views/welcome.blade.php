@@ -37,9 +37,13 @@
             ">
                 <h3>請先選擇您的保卡類型</h3>
                 <a href="#" class="btn btn-secondary btn-lg" id="CPF" style="margin: 5px; width:80%">鍍膜</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%">隔熱紙</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="ENVELOPE" style="margin: 5px; width:80%">包膜</a>
                 <a href="#" class="btn btn-secondary btn-lg" id="BATTERY" style="margin: 5px; width:80%">電池</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%" disabled="disabled">建築物(製作中)</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="FILM" style="margin: 5px; width:80%">隔熱膜</a>
+
+                <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%;">汽車膜</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%;" disabled="disabled">建築物(製作中)</a>
+                <a href="#" class="btn btn-primary" id="reload" style="margin-top: 5px">上一步</a>
             </div>
 
             <form method="POST" action="/postwarranty" id="warranty_code" class="shadow_box" style="padding: 10px;">
@@ -110,10 +114,6 @@
                     <!-- pass json body end -->
 
                     <div class="form-group pb-3">
-                        <!--
-                        <label for="store" class="pb-1">施工店家</label>
-                        <input type="text" class="form-control" id="store" name="store">
-                        -->
                         <label for="store" class="pb-1">施工店家</label>
                         <select class="form-control" id="store" name="store" required>
                             @foreach ($Data['AllStores'] as $item)
@@ -178,6 +178,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     //var warranty_type = 'SUN';
+    $("#reload").hide();
+    $("#SUN").hide();
+    $("#BUILDING").hide();
     $("#warranty_code").hide();
     $("#SUN").click(function(){
         warranty_type = 'SUN';
@@ -230,14 +233,25 @@
         $("#warranty_code").show('slow');
         $("#warranty_type").hide('slow');
     });
-    // $("#BUILDING").click(function(){
-    //     warranty_type = 'BUILDING';
-    // });
+
+    $("#FILM").click(function(){
+        $("#CPF").hide();
+        $("#ENVELOPE").hide();
+        $("#BATTERY").hide();
+        $("#FILM").hide();
+        $("#SUN").show('slow');
+        $("#BUILDING").show('slow');
+        $("#reload").show('slow');
+    });
+
+    $("#reload").click(function(){
+        location.reload();
+    });
 
     $("#pre").click(function(){
         $("#warranty_code").hide('slow');
         $("#warranty_type").show('slow');
-    })
+    });
 
     // 檢查碼填寫後檢查
     $("#next").on('click', function(){
