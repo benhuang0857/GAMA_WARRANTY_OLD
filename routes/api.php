@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,26 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/get-point', function (Request $request) {
+    $email = $request->umail;
+    try {
+        $user = User::where('email', $email)->first();
+        return $user->gama_point;
+    } catch (\Throwable $th) {
+        return "Null";
+    }
+});
+
+Route::get('/send-point', function (Request $request) {
+    $email = $request->umail;
+    $point = $request->point;
+    try {
+        $user = User::where('email', $email)->first();
+        $user->gama_point += $point;
+        $user->save();
+    } catch (\Throwable $th) {
+        return "Null";
+    }
 });

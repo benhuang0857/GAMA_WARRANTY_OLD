@@ -38,7 +38,8 @@
                 <h3>請先選擇您的保卡類型</h3>
                 <a href="#" class="btn btn-secondary btn-lg" id="CPF" style="margin: 5px; width:80%">鍍膜</a>
                 <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%">隔熱紙</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%" disabled="disabled">建築物</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="BATTERY" style="margin: 5px; width:80%">電池</a>
+                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%" disabled="disabled">建築物(製作中)</a>
             </div>
 
             <form method="POST" action="/postwarranty" id="warranty_code" class="shadow_box" style="padding: 10px;">
@@ -197,6 +198,23 @@
     });
     $("#CPF").click(function(){
         warranty_type = 'CPF';
+
+        $.ajax({
+            type: "GET",
+            url: '/get_response_product',
+            data: {
+                'type': warranty_type,
+            },
+            dataType: 'html',
+            success: function (response) {
+                $("#product_response").html(response);
+            }
+        });
+        $("#warranty_code").show('slow');
+        $("#warranty_type").hide('slow');
+    });
+    $("#BATTERY").click(function(){
+        warranty_type = 'BATTERY';
 
         $.ajax({
             type: "GET",

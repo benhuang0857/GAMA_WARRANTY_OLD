@@ -96,7 +96,11 @@ class ProductCardController extends AdminController
 
         $form->text('name', '料號');
         $form->text('sku', __('Sku'));
-        $form->text('category', '產品分類');
+        $form->select('category', '產品分類')->options([
+            'SUN' => '隔熱紙',
+            'CPF' => '鍍膜',
+            'BATTERY' => '電池'
+        ]);
         $form->select('series', '系列')->options($seriesArr);
         $form->number('gama_point', '反點');
         $form->number('warranty_time', '保固時間');

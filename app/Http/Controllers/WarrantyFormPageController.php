@@ -114,6 +114,10 @@ class WarrantyFormPageController extends Controller
             </div>
             ';
         }
+        if($req->type == 'BATTERY')
+        {
+            $Products = Product::where('category', 'BATTERY')->get();
+        }
 
         $presult = "";
         foreach($Products as $Product)
