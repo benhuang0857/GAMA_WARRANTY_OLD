@@ -110,7 +110,7 @@
                         Swal.fire({
                             title: '兌換'+tName+'票卷',
                             html: '票卷將於 <b></b> 秒後關閉.',
-                            timer: cnt,
+                            timer: 30000,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()
@@ -162,7 +162,7 @@
                                 Swal.fire({
                                     title: '兌換'+tName+'票卷',
                                     html: '票卷將於 <b></b> 秒後關閉.',
-                                    timer: cnt,
+                                    timer: 30000,
                                     timerProgressBar: true,
                                     didOpen: () => {
                                         Swal.showLoading()
