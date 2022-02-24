@@ -108,7 +108,7 @@
 
                         console.log(conter);
 
-                        let timerInterval
+                        var timerInterval
                         Swal.fire({
                             title: '兌換'+tName+'票卷',
                             html: '票卷將於 <b></b> 秒後關閉.',
@@ -159,7 +159,7 @@
 
                                 var conter = Date.parse(endTime) - Date.parse(nowTime);
 
-                                let timerInterval
+                                var timerInterval
                                 Swal.fire({
                                     title: '兌換'+tName+'票卷',
                                     html: '票卷將於 <b></b> 秒後關閉.',
