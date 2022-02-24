@@ -116,7 +116,7 @@
                                 Swal.showLoading()
                                 var b = Swal.getHtmlContainer().querySelector('b')
                                 timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
+                                    b.textContent = Swal.getTimerLeft()/1000
                                 }, 50)
                             },
                             willClose: () => {
@@ -168,7 +168,7 @@
                                         Swal.showLoading()
                                         var b = Swal.getHtmlContainer().querySelector('b')
                                         timerInterval = setInterval(() => {
-                                            b.textContent = Swal.getTimerLeft()
+                                            b.textContent = Swal.getTimerLeft()/1000
                                         }, 50)
                                     },
                                     willClose: () => {
