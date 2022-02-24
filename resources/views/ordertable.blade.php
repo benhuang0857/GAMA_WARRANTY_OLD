@@ -104,12 +104,13 @@
                         var repEndTime = repEndTime;
                         repEndTime = new Date(repEndTime);
                         var conter = Date.parse(repEndTime) - Date.parse(nowTime);
+                        var cnt = parseInt(conter);
 
                         var timerInterval
                         Swal.fire({
                             title: '兌換'+tName+'票卷',
                             html: '票卷將於 <b></b> 秒後關閉.',
-                            timer: parseInt(conter),
+                            timer: cnt,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()
@@ -155,12 +156,13 @@
                             success: function () {
 
                                 var conter = Date.parse(endTime) - Date.parse(nowTime);
+                                var cnt = parseInt(conter);
 
                                 var timerInterval
                                 Swal.fire({
                                     title: '兌換'+tName+'票卷',
                                     html: '票卷將於 <b></b> 秒後關閉.',
-                                    timer: parseInt(conter),
+                                    timer: cnt,
                                     timerProgressBar: true,
                                     didOpen: () => {
                                         Swal.showLoading()
