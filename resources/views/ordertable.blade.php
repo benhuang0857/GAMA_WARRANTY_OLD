@@ -68,7 +68,6 @@
 
         var ID = $(this).attr('value');
         var tcontainVal = $("#tcontain-" + ID).attr("value");
-        //console.log(JSON.parse(tcontainVal)['product_name']);
         var tName = JSON.parse(tcontainVal)['product_name'];
 
         var initTime = new Date;
@@ -106,13 +105,11 @@
                         repEndTime = new Date(repEndTime);
                         var conter = Date.parse(repEndTime) - Date.parse(nowTime);
 
-                        console.log(conter);
-
                         var timerInterval
                         Swal.fire({
                             title: '兌換'+tName+'票卷',
                             html: '票卷將於 <b></b> 秒後關閉.',
-                            timer: conter,
+                            timer: 50000,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()
@@ -163,7 +160,7 @@
                                 Swal.fire({
                                     title: '兌換'+tName+'票卷',
                                     html: '票卷將於 <b></b> 秒後關閉.',
-                                    timer: conter,
+                                    timer: 50000,
                                     timerProgressBar: true,
                                     didOpen: () => {
                                         Swal.showLoading()
