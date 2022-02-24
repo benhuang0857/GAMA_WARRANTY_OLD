@@ -25,7 +25,7 @@ class AddEmailToWithdraw extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('withdraw', function (Blueprint $table) {
             $table->dropColumn('user_email');
         });
     }

@@ -38,5 +38,8 @@ Route::get('/callback/login', 'LoginController@lineLoginCallBack');
 Route::get('/tickets', 'TicketController@index')->middleware('auth');
 Route::post('/buy-ticket', 'TicketController@buyTicket')->middleware('auth');
 Route::get('/orders', 'OrderController@index')->middleware('auth');
+Route::get('/update-order/{id}', 'OrderController@update');
+Route::get('/get-time/{id}', 'OrderController@getTime');
+Route::get('/close-order/{id}', 'OrderController@close');
 
 Route::get('/withdraw', 'WithDrawController@index')->middleware('auth');
