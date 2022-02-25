@@ -149,6 +149,22 @@
                             window.location.reload();
                         });
                     }
+                    if(response == 'Do not have enough money')
+                    {
+                        Swal.fire({
+                            icon: 'error',
+                            confirmButtonColor: '#6c757d',
+                            title: '點數不足',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        }).then((result) =>{
+                            window.location.reload();
+                        });
+                    }
                     else
                     {
                         Swal.fire({

@@ -7,6 +7,7 @@ use App\Ticket;
 use App\Order;
 use App\User;
 use App\SheetCode;
+use Auth;
 
 class TicketController extends Controller
 {
@@ -31,6 +32,12 @@ class TicketController extends Controller
     public function buyTicket(Request $req)
     {
         $Order = new Order();
+        $User = User::where( 'uniqid', $req->user_uniqid )->first();
+        
+
+        if ($User->gama_point < $req->price) {
+            return 'Do not have enough money';
+        }
 
         $orderContain = [
             'code_type' => 'cpc',
@@ -43,7 +50,7 @@ class TicketController extends Controller
         $Order->price = $req->price;
         $Order->save();
 
-        $User = User::where( 'uniqid', $req->user_uniqid )->first();
+        
         $User->gama_point -= $req->price;
         $User->save();
 
