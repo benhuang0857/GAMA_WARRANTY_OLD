@@ -28,6 +28,18 @@ Route::get('/get-point', function (Request $request) {
     }
 });
 
+Route::get('/kol-point', function (Request $request) {
+    $uncode = $request->uncode;
+    $point = $request->point;
+    try {
+        $user = User::where('uniqid', $uncode)->first();
+        $user->gama_point += $point;
+        $user->save();
+    } catch (\Throwable $th) {
+        return "Null";
+    }
+});
+
 Route::get('/send-point', function (Request $request) {
     $email = $request->umail;
     $point = $request->point;
@@ -38,4 +50,21 @@ Route::get('/send-point', function (Request $request) {
     } catch (\Throwable $th) {
         return "Null";
     }
+});
+
+Route::post('/wp-register', function (Request $request) {
+    $uname = $request->uname;
+    $email = $request->email;
+    $pass = $request->pass;
+    $country = $request->country;
+    $mobile = $request->mobile;
+
+    $uniqid = uniqid();
+    $user = new User;
+    $user->uniqid = $uniqid;
+    $user->name = $uname;
+    $user->email = $email;
+    $user->mobile = $country.$mobile;
+    $user->password = bcrypt($pass);
+    $user->save();
 });
