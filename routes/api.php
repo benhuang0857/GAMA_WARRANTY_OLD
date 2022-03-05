@@ -40,6 +40,19 @@ Route::get('/kol-point', function (Request $request) {
     }
 });
 
+Route::get('/get-uncode', function (Request $request) {
+    $email = $request->umail;
+    try {
+        $user = User::where('email', $email)->first();
+        if ($user != NULL) {
+            return $user->uniqid;
+        }
+        return "Null";
+    } catch (\Throwable $th) {
+        return "Null";
+    }
+});
+
 Route::get('/send-point', function (Request $request) {
     $email = $request->umail;
     $point = $request->point;
