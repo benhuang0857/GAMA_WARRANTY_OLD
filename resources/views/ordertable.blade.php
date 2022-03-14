@@ -74,7 +74,7 @@
         var nowTime = (initTime.getFullYear()) + "-" + (initTime.getMonth() + 1) + "-" + initTime.getDate()
             + " " + initTime.getHours() + ":" + initTime.getMinutes() + ":" + initTime.getSeconds();
 
-        initTime.setSeconds(initTime.getSeconds() + 30);
+        initTime.setSeconds(initTime.getSeconds() + 5);
         var endTime = (initTime.getFullYear()) + "-" + (initTime.getMonth() + 1) + "-" + initTime.getDate()
             + " " + initTime.getHours() + ":" + initTime.getMinutes() + ":" + initTime.getSeconds();
 
@@ -110,7 +110,7 @@
                         Swal.fire({
                             title: '兌換'+tName+'票卷',
                             html: '票卷將於 <b></b> 秒後關閉.',
-                            timer: 30000,
+                            timer: 5000,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()
@@ -162,7 +162,7 @@
                                 Swal.fire({
                                     title: '兌換'+tName+'票卷',
                                     html: '票卷將於 <b></b> 秒後關閉.',
-                                    timer: 30000,
+                                    timer: 5000,
                                     timerProgressBar: true,
                                     didOpen: () => {
                                         Swal.showLoading()
