@@ -11,7 +11,9 @@ class OrderController extends Controller
     public function index()
     {
         $user_uniqid = Auth::user()->uniqid;
-        $orders = Order::where('uniqid', $user_uniqid)->get();
+        $orders = Order::where('uniqid', $user_uniqid)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(5);
 
         $data = [
             'Orders' => $orders

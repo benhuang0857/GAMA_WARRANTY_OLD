@@ -11,30 +11,31 @@
                     <table class="table text-nowrap">
                         <thead>
                             <tr>
-                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">兌換</th>
                                 <th class="border-top-0">票卷名稱</th>
                                 <th class="border-top-0">價格</th>
                                 <th class="border-top-0">購買時間</th>
-                                <th class="border-top-0">查看</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($Data['Orders'] as $ticket)
                             <tr>
                                 <input style="display: none;" type="text" id="tcontain-{{$ticket->id}}" value="{{ $ticket->contain }}">
-                                <td>#</td>
+                                @if($ticket->status == 'unused')
+                                <td><a href="#" class="show-sheet btn btn-info btn-sm" style="width:100%" value="{{ $ticket->id }}">兌換</a></td>
+                                @else
+                                <td><a href="#" class="btn btn-light btn-sm" style="width:100%">以核銷</a></td>
+                                @endif
                                 <td>{{ json_decode($ticket->contain)->product_name }}</td>
                                 <td>{{ $ticket->price }}</td>
                                 <td>{{ $ticket->created_at }}</td>
-                                @if($ticket->status == 'unused')
-                                <td><a href="#" class="show-sheet" value="{{ $ticket->id }}">兌換</a></td>
-                                @else
-                                <td>已使用</td>
-                                @endif
+                                
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+
+                    {{ $Data['Orders']->links() }}
                 </div>
             </div>
         </div>
@@ -186,6 +187,15 @@
                                             url: `/close-order/${ID}`,
                                             dataType: 'html',
                                             success: function () {
+                                                Swal.fire({
+                                                title: '票卷兌換完畢',
+                                                confirmButtonText: '完成'
+                                                }).then((result) => {
+                                                    /* Read more about isConfirmed, isDenied below */
+                                                    if (result.isConfirmed) {
+                                                        location.reload();
+                                                    }
+                                                })
 
                                             },
                                         });
