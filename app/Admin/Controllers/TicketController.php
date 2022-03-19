@@ -69,11 +69,13 @@ class TicketController extends AdminController
     {
         $form = new Form(new Ticket());
 
-        $form->text('code_type', __('Code type'));
-        $form->text('name', __('Name'));
-        $form->number('price', __('Price'));
-        $form->image('image', __('Image'));
-        $form->textarea('description', __('Description'));
+        $form->text('code_type', __('適用何種票卷'));
+        $form->text('name', __('票卷名稱'));
+        // $form->text('city', __('城市'));
+        // $form->text('area', __('區域'));
+        $form->number('price', __('價格'));
+        $form->image('image', __('圖片'));
+        $form->textarea('description', __('內容描述'));
 
         return $form;
     }

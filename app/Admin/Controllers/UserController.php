@@ -97,7 +97,8 @@ class UserController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', '姓名');
-        $form->text('uniqid', '系統自動產生ID')->value(uniqid())->readonly();
+        $form->text('uniqid', '系統自動產生ID')->value(uniqid());
+        //$form->text('uniqid', '系統自動產生ID')->value(uniqid())->readonly();
         $form->email('email', __('Email'));
         //$form->mobile('mobile', '電話')->options(['mask' => '9999999999']);
         $form->select('country_code', '國碼')->options([
