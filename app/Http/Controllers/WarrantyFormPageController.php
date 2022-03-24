@@ -131,7 +131,7 @@ class WarrantyFormPageController extends Controller
                     <span class="input-group-text">產品</span>
                 </div>
                 <select class="form-control" class="product" name="product-1" required>
-                    <option value="none">無</option>
+                    <option value="none">請點選產品</option>
                     XXX
                     '.$presult.'
                 </select>
