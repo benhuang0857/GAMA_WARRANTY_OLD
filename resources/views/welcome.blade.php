@@ -53,8 +53,8 @@
                     <span id="check_status">
                     </span>
                     <input type="text" class="form-control" id="check-code" name="check-code" placeholder="保卡號碼" required>
-                    <a href="#" class="btn btn-primary" id="next" style="margin-top: 5px">下一步</a>
                     <a href="#" class="btn btn-primary" id="pre" style="margin-top: 5px">上一步</a>
+                    <a href="#" class="btn btn-primary" id="next" style="margin-top: 5px">下一步</a>
                 </div>
                 <div id="lockit" class="cantsee">
                     <div class="form-group pb-3">

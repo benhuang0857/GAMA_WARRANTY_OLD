@@ -31,7 +31,6 @@ class WarrantyCardController extends AdminController
         $grid->filter(function($filter){
             $filter->disableIdFilter();
             $filter->like('check_code', '保卡編號');
-            $filter->like('card_id', '檢查碼');
             $filter->like('name', '用戶名');
             $filter->like('mobile', '手機號');
             $filter->like('car_license', '車牌');
@@ -39,8 +38,8 @@ class WarrantyCardController extends AdminController
         });
 
         $grid->column('id', __('Id'));
-        $grid->column('check_code', '檢查碼')->width(130);
-        $grid->column('card_id', '保卡編號')->width(80);
+        $grid->column('check_code', '保卡編號')->width(130);
+        //$grid->column('card_id', '保卡編號')->width(80);
         $grid->column('name', '用戶名')->width(80);
         $grid->column('mobile', '手機')->width(120);
         $grid->column('address', '地址')->width(200);
@@ -112,8 +111,8 @@ class WarrantyCardController extends AdminController
     {
         $form = new Form(new WarrantyCard());
 
-        $form->text('check_code', '檢查碼');
-        $form->text('card_id', '保卡編號');
+        $form->text('check_code', '保卡編號');
+        //$form->text('card_id', '保卡編號');
         $form->text('name', '用戶名');
         //$form->mobile('mobile', '手機')->options(['mask' => '9999999999']);
         $form->text('mobile', '電話(可填國碼)');
