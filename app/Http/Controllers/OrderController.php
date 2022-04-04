@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\GamaTransLog;
 use Auth;
 
 class OrderController extends Controller
@@ -14,9 +15,11 @@ class OrderController extends Controller
         $orders = Order::where('uniqid', $user_uniqid)
                         ->orderBy('created_at', 'desc')
                         ->paginate(5);
+        $freeGoods = GamaTransLog::where('user_uniqid', $user_uniqid)->get();
 
         $data = [
-            'Orders' => $orders
+            'Orders' => $orders,
+            'FreeGoods' => $freeGoods
         ];
 
         return view('ordertable')->with('Data', $data);
