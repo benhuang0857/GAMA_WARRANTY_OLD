@@ -129,7 +129,7 @@
 
                     <div class="form-group pb-3">
                         <label for="price" class="pb-1">施工費用</label>
-                        <input type="text" class="form-control" id="price" name="price">
+                        <input type="number" class="form-control" id="price" name="price">
                     </div>
 
                     <div class="form-group pb-3">
@@ -277,44 +277,62 @@
         });
     });
 
-    // 動態增加商品輸入欄位
-    // var i = 2;
-    // $('.plus-dp').click(function(){
-    //     console.log(warranty_type);
-    //     $.ajax({
-    //         type: "GET",
-    //         url: '/product',
-    //         data: {
-    //             'num': i,
-    //             'type': warranty_type
-    //         },
-    //         dataType: 'html',
-    //         success: function (response) {
-    //             $('#dp').append(response);
-    //             i++;
-    //         },
-    //     });
-    // });
-
-    // $('.minus-dp').click(function(){
-    //     $(this).parent().remove();
-    // });
-
-    $('#pass').click(function(){
-
-        let fill_all = true;
+    $('#pass').click(function()
+    {
+        var passFlag = true;
+        var product_group = $('#product-group :input').serializeArray();
+        
         $("input[type='text']").each(function() {
             if ($(this).val() == "") {
-                fill_all = false;
-            }         
+                passFlag = false;
+            }
         });
 
-        if(fill_all == false)
+        for(var i=0; i<product_group.length; i++)
+        {
+            if (product_group[i]['value'] == "none") {
+                passFlag = false;
+            }
+        }
+ 
+        if( $('#construction_date').val() == '' )
         {
             Swal.fire({
                 icon: 'error',
                 confirmButtonColor: 'red',
-                title: '請填寫表單欄位',
+                title: '請填寫施工日完成日期',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+            passFlag = false;
+        }
+
+        if( product_group.length < 2 || product_group[0]['value'] == 'none')
+        {
+            Swal.fire({
+                icon: 'error',
+                confirmButtonColor: 'red',
+                title: '請選擇產品並且勾選施工位置',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+            passFlag = false;
+        }
+
+        if(passFlag == false)
+        {
+            Swal.fire({
+                icon: 'error',
+                confirmButtonColor: 'red',
+                title: '所有欄位請都填寫完畢再送出',
                 showClass: {
                     popup: 'animate__animated animate__fadeInDown'
                 },
@@ -325,54 +343,54 @@
         }
         else
         {
-            passData();
+            passData(passFlag, product_group);
         }
     });
 
-    function passData()
+    function passData(passFlag, product_group)
     {
-        var product_group = $('#product-group :input').serializeArray();
-        console.log(product_group);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: "POST",
-            url: '/postwarranty',
-            data: {
-                'check_code': $('#check-code').val(),
-                'user_name': $('#user-name').val(),
-                'user_mobile': $('#user-mobile').val(),
-                'user_email': $('#user-email').val(),
-                'user_address': $('#user-address').val(),
-                'user_carlicense': $('#user-carlicense').val(),
-                'user_carbrand': $('#user-carbrand').val(),
-                'user_carname': $('#user-carname').val(),
-                'warranty_type': $('#warranty-type').val(),
-                'store': $('#store').val(),
-                'construction_date': $('#construction_date').val(),
-                'price': $('#price').val(),
-                'recommand': $('#recommand').val(),
-                'product_group': product_group,
-            },
-            dataType: 'html',
-            success: function (response) {
-                Swal.fire({
-                    icon: 'success',
-                    confirmButtonColor: '#6c757d',
-                    title: '保證卡註冊成功',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                }).then((result) =>{
-                    window.location.reload();
-                });
-                
-            },
-        });
+        if(passFlag == true)
+        {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: '/postwarranty',
+                data: {
+                    'check_code': $('#check-code').val(),
+                    'user_name': $('#user-name').val(),
+                    'user_mobile': $('#user-mobile').val(),
+                    'user_email': $('#user-email').val(),
+                    'user_address': $('#user-address').val(),
+                    'user_carlicense': $('#user-carlicense').val(),
+                    'user_carbrand': $('#user-carbrand').val(),
+                    'user_carname': $('#user-carname').val(),
+                    'warranty_type': $('#warranty-type').val(),
+                    'store': $('#store').val(),
+                    'construction_date': $('#construction_date').val(),
+                    'price': $('#price').val(),
+                    'recommand': $('#recommand').val(),
+                    'product_group': product_group,
+                },
+                dataType: 'html',
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        confirmButtonColor: '#6c757d',
+                        title: '保證卡註冊成功',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }).then((result) =>{
+                        window.location.reload();
+                    });
+                },
+            });
+        }
     }
 </script>
 

@@ -51,7 +51,7 @@
                                 @if($ticket->status == 'unused')
                                 <td><a href="#" class="show-sheet btn btn-info btn-sm" style="width:100%" value="{{ $ticket->id }}">兌換</a></td>
                                 @else
-                                <td><a href="#" class="btn btn-light btn-sm" style="width:100%">以核銷</a></td>
+                                <td><a href="#" class="btn btn-light btn-sm" style="width:100%">已核銷</a></td>
                                 @endif
                                 <td>{{ json_decode($ticket->contain)->product_name }}</td>
                                 <td>{{ $ticket->price }}</td>
