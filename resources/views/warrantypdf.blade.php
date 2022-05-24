@@ -221,7 +221,7 @@
                     </div>
                     <div class="col">
                         @if($CARD->status != 'OFF')
-                            <img src="{{asset('/images/site/wlogo-stamp.png')}}" class="img-fluid">
+                            <img src="{{asset('/images/site/wlogo-stamp-2.png')}}" class="img-fluid">
                         @endif
                     </div>
                 </div>
