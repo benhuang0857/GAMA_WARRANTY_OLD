@@ -32,9 +32,10 @@
                             <div class="col-md-6">
                                 <select class="form-control" id="country_code" name="country_code" required>
                                     <option value="+886">台灣</option>
-                                    <option value="+1">美國</option>
                                     <option value="+852">香港</option>
+                                    <option value="+853">澳門</option>
                                     <option value="+86">中國</option>
+                                    <option value="+1">美國</option>
                                 </select>
                             </div>
                         </div>
