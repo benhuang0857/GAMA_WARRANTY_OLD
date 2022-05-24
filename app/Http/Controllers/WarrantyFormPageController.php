@@ -304,9 +304,9 @@ class WarrantyFormPageController extends Controller
 
     public function getWarrantyPDF($card_id)
     {
-
         $data = WarrantyCard::where('card_id', $card_id)->first();
-        $pdf = PDF::loadView('warrantypdf', array('CARD' => $data));
-        return $pdf->download('gama.pdf'); 
+        return view('warrantypdf',array('CARD' => $data));
+        // $pdf = PDF::loadView('warrantypdf', array('CARD' => $data));
+        // return $pdf->download('gama.pdf'); 
     }
 }
