@@ -50,7 +50,7 @@ class WarrantyFormPageController extends Controller
             'AllStores'=> $allstores
         ];
 
-        return view('welcome')->with('Data', $data);
+        return view('carwarrantyform')->with('Data', $data);
     }
 
     public function reponseProduct(Request $req)
