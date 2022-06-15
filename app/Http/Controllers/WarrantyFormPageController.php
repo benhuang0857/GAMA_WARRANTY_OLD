@@ -53,6 +53,29 @@ class WarrantyFormPageController extends Controller
         return view('carwarrantyform')->with('Data', $data);
     }
 
+    public function buildingWarranty($uid = null)
+    {
+        try {
+            $recommand = $_COOKIE['_UID'];
+        } catch (\Throwable $th) {
+            $recommand = 'no';
+        }
+        
+        $products = Product::all();
+        $brands = Brand::all();
+        $allstores = GAMAStore::all();
+
+        $data = [
+            'Auth'     => Auth::user(),
+            'Products' => $products,
+            'Brands'   => $brands,
+            'Recommand'=> $recommand,
+            'AllStores'=> $allstores
+        ];
+
+        return view('buildingwarrantyform')->with('Data', $data);
+    }
+
     public function reponseProduct(Request $req)
     {
         //return $req->type;

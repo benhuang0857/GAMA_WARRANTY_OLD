@@ -74,35 +74,12 @@
                         <input type="text" class="form-control" id="user-address" name="user-address" value="{{$Data['Auth']->address}}" required>
                     </div>
                     <div class="form-group pb-3">
-                        <label for="user-carlicense" class="pb-1">車牌號碼</label>
-                        <input type="text" class="form-control" id="user-carlicense" name="user-carlicense" required>
-                    </div>
-                    <div class="form-group pb-3">
-                        <label for="user-carbrand" class="pb-1">車輛品牌</label>
-                        <select class="form-control" id="user-carbrand" name="user-carbrand" required>
-                            <option value="none">無</option>
-                            @foreach ($Data['Brands'] as $Brand)
-                            <option value="{{$Brand->name}}">{{$Brand->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group pb-3">
-                        <label for="user-carname" class="pb-1">車輛款式</label>
-                        <input type="text" class="form-control" id="user-carname" name="user-carname">
-                    </div>
-                    <div class="form-group pb-3">
-                        <label for="warranty-type" class="pb-1">型式</label>
-                        <select class="form-control" id="warranty-type" name="warranty-type" required>
-                            <option>轎車</option>
-                            <option>大型休旅車</option>
-                            <option>小型休旅車</option>
-                            <option>貨車</option>
-                        </select>
+                        <label for="floor-num" class="pb-1">樓層</label>
+                        <input type="text" class="form-control" id="floor-num" name="floor-num" required>
                     </div>
 
                     <!-- pass json body start -->
                     <div id="product-group">
-
                         <div id="product_response">
 
                         </div>

@@ -12,6 +12,9 @@
 */
 
 Auth::routes();
+
+Route::get('/building-warranty', 'WarrantyFormPageController@buildingWarranty');
+
 Route::get('/warranty', 'WarrantyFormPageController@index');
 Route::get('/warranty/{uid}', 'WarrantyFormPageController@index');
 Route::get('/my_warranty', 'WarrantyFormPageController@warrantytable')->middleware('auth');
