@@ -155,6 +155,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     //var warranty_type = 'SUN';
+    /*
     $("#reload").hide();
     $("#SUN").hide();
     $("#BUILDING").hide();
@@ -369,10 +370,11 @@
             });
         }
     }
+    */
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <script>
-    $("#myModal").modal();
+    // $("#myModal").modal();
 </script>
 @endsection
