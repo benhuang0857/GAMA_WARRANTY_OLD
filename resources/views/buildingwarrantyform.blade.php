@@ -6,7 +6,7 @@
 <style>
     .cantsee 
     {
-        display: none;
+        /* display: none; */
     }
     .modal a.close-modal
     {
