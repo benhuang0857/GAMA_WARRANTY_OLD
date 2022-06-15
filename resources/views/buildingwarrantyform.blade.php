@@ -22,31 +22,7 @@
 <div class="container" style="margin-top:100px; margin-bottom:100px">
     <div class="row justify-content-center">
         <div class="col-md-6" id="warranty-area">
-            <div class="form-group pb-3">
-                <h2>GAMA
-                <span style="font-size: 22px;">保證卡</span>
-                </h2>
-            </div>
-
-            <div id="warranty_type" style="
-                text-align: center;
-                padding: 80px;
-                background: white;
-                border-radius: 10px;
-                box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
-            ">
-                <h3>請先選擇您的保卡類型</h3>
-                <a href="#" class="btn btn-secondary btn-lg" id="CPF" style="margin: 5px; width:80%">鍍膜</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="ENVELOPE" style="margin: 5px; width:80%">包膜</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="BATTERY" style="margin: 5px; width:80%">電池</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="FILM" style="margin: 5px; width:80%">隔熱膜</a>
-
-                <a href="#" class="btn btn-secondary btn-lg" id="SUN" style="margin: 5px; width:80%;">汽車膜</a>
-                <a href="#" class="btn btn-secondary btn-lg" id="BUILDING" style="margin: 5px; width:80%;" disabled="disabled">建築物(製作中)</a>
-                <BR><a href="#" class="btn btn-primary" id="reload" style="margin-top: 5px">上一步</a>
-            </div>
-
-            <form method="POST" action="/postwarranty" id="warranty_code" class="shadow_box" style="padding: 10px;">
+            <form method="POST" action="#" id="warranty_code" class="shadow_box" style="padding: 10px;">
                 @csrf
                 <div class="form-group pb-3">
                     <label for="check-code" class="pb-1">請先填寫保卡號碼</label>
