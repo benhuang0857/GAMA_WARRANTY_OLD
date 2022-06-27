@@ -103,7 +103,7 @@ class ProductCardController extends AdminController
         ]);
         $form->select('series', '系列')->options($seriesArr);
         $form->number('gama_point', '反點');
-        $form->float('warranty_time', '保固時間');
+        $form->rate('warranty_time', '保固時間');
         $form->select('status', '狀態')->options([
             'OFF' => '未啟用',
             'ON' => '啟用',
