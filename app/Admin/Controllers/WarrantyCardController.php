@@ -137,7 +137,7 @@ class WarrantyCardController extends AdminController
 
         $form->saving(function (Form $form) {
             if ($form->status == 'ON' && $form->startdate == '' && $form->model()->has_enabled == 'no') {
-                $form->startdate = now();
+                $form->startdate = $form->construction_date;
                 $form->enddate = Date('y-m-d', strtotime('+1825 days'));
                 $form->has_enabled = 'yes';
             }
